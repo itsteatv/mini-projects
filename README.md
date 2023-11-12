@@ -17,6 +17,11 @@ These mini projects serve as a playground for experimenting with new technologie
 - **TypeScript:** A typed superset of JavaScript, enhancing code quality and development experience.
 - **Tailwind CSS:** A utility-first CSS framework for quickly building designs.
 
+## Project List
+
+1. [Project 1: 3 column preview card component](https://github.com/itsteatv/mini-projects/tree/master/3-column%20preview%20card%20component)
+2. [Project 2: profile card component](https://github.com/itsteatv/mini-projects/tree/master/profile-card-component)
+
 ## How to Run
 
 For each project, follow the specific instructions in their respective README files to set up and run the application.
@@ -24,5 +29,9 @@ For each project, follow the specific instructions in their respective README fi
 ## Contributions
 
 Feel free to contribute, open issues, or suggest improvements. Your feedback is highly appreciated!
+
+## License
+
+This repository is licensed under the [MIT License](LICENSE.md).
 
 Happy coding! 🚀
