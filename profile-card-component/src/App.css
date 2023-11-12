@@ -1,0 +1,172 @@
+@import url("https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap");
+
+:root {
+  --kumbh-sans: "Kumbh Sans", sans-serif;
+  --background-color: hsl(185, 75%, 39%);
+  --white: white;
+  --very-dark-blue: hsl(229, 23%, 23%);
+  --grayish-blue: hsl(227, 10%, 46%);
+  --Dark-gray: hsl(0, 0%, 59%);
+
+  /* Fluid Font Sizes */
+  --font-size-fluid-0: clamp(0.75rem, 1.5vw, 3rem);
+  --font-size-fluid-1: clamp(1rem, 2vw, 1.5rem);
+  --font-size-fluid-2: clamp(0.75rem, 0.492rem + 2.7523vw, 1.125rem);
+  --font-size-fluid-3: clamp(0.25rem, -0.3521rem + 6.422vw, 1.125rem);
+  --font-size-fluid-4: clamp(1.5rem, 3vw, 2.5rem);
+  --font-size-fluid-5: clamp(2rem, 4vw, 3.5rem);
+
+  /* Fluid Sizes */
+  --size-fluid-1: clamp(0.5rem, 1vw, 1rem);
+  --size-fluid-2: clamp(1rem, 2vw, 1.5rem);
+  --size-fluid-3: clamp(1.5rem, 3vw, 2rem);
+  --size-fluid-4: clamp(2.5rem, 3.4461rem + -10.0917vw, 1.125rem);
+  --size-fluid-5: clamp(4rem, 5vw, 5rem);
+  --size-fluid-6: clamp(4.75rem, 7vw, 7.5rem);
+  --size-fluid-7: clamp(7.5rem, 10vw, 10rem);
+  --size-fluid-8: clamp(10rem, 20vw, 15rem);
+  --size-fluid-9: clamp(15rem, 30vw, 20rem);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  min-height: 100%;
+  overflow-x: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+body {
+  font-family: var(--kumbh-sans);
+  background: url(./assets/bg-pattern-top.svg),
+    url(./assets/bg-pattern-bottom.svg);
+  background-position: top -900px left -700px, bottom -1250px right -550px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: var(--background-color);
+  background-blend-mode: overlay;
+}
+
+.main-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+  height: 23rem;
+  max-width: 22rem;
+  background-color: var(--white);
+  border-radius: 1rem;
+  transition: 0.3s;
+}
+
+/* Images */
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+.header-image {
+  width: 100%;
+  height: auto;
+  border-radius: 1rem 1rem 0 0;
+}
+
+.profile-picture {
+  position: absolute;
+  border: 0.313rem solid var(--white);
+  border-radius: 50%;
+  top: 5rem;
+}
+
+.details {
+  line-height: 1.563rem;
+  margin-top: 4.5rem;
+}
+
+.details h1 {
+  font-size: 1.125rem;
+  color: var(--very-dark-blue);
+}
+
+.details span {
+  color: var(--Dark-gray);
+  margin-left: 0.25rem;
+  font-weight: 500;
+}
+
+.location {
+  color: var(--grayish-blue);
+  padding: 0.313rem;
+}
+
+hr {
+  margin-top: 1rem;
+  width: 100%;
+  opacity: 0.5;
+}
+
+.info-container {
+  display: flex;
+  gap: 3rem;
+  text-align: center;
+  line-height: 1.25rem;
+  flex-direction: row;
+  padding: 1.75rem;
+}
+
+h2 {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--very-dark-blue);
+}
+
+p {
+  color: var(--grayish-blue);
+  letter-spacing: 0.125rem;
+  font-size: 0.625rem;
+}
+
+/* Media Queries */
+
+@media (max-width: 90em) {
+  body {
+    background-position: top -900px left -700px, bottom -1250px right -550px;
+  }
+}
+
+/* 375px */
+@media (max-width: 23em) {
+  body {
+    background-position: top -501px left -761px, bottom -411px right -751px;
+  }
+
+  .main-container {
+    width: 90%;
+  }
+
+  .profile-picture {
+    width: 30%;
+  }
+
+  .details h1 {
+    font-size: var(--font-size-fluid-2);
+  }
+
+  .info-container {
+    padding: var(--size-fluid-4);
+  }
+
+  h2 {
+    font-size: var(--font-size-fluid-3);
+  }
+}
