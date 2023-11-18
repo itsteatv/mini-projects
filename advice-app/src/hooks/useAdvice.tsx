@@ -13,10 +13,10 @@ const fetchAdvice = async (): Promise<Advice> => {
 };
 
 export function useAdvice() {
-    const { isLoading, data: advice } = useQuery({
+    const { isLoading, data: advice, error } = useQuery({
         queryKey: ['advice'],
         queryFn: fetchAdvice,
     });
 
-    return { isLoading, advice }
+    return { isLoading, advice, error }
 }
