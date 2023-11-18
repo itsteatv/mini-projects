@@ -30,8 +30,4 @@ For each project, follow the specific instructions in their respective README fi
 
 Feel free to contribute, open issues, or suggest improvements. Your feedback is highly appreciated!
 
-## License
-
-This repository is licensed under the [MIT License](LICENSE.md).
-
 Happy coding! 🚀
