@@ -1,5 +1,6 @@
 interface DiceProps {
   generateRandomId: () => void;
+  diceId?: number;
 }
 
 import dice from "../assets/images/icon-dice.svg";

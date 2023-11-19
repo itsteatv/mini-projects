@@ -41,7 +41,7 @@ function AdviceContent() {
               alt="divider pattern"
             />
           </div>
-          <Dice generateRandomId={generateRandomId} />
+          <Dice diceId={diceId} generateRandomId={generateRandomId} />
         </article>
       </div>
     </>
