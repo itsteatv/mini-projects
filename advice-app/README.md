@@ -15,6 +15,9 @@ Advice App is a mini app for showing random advices from api. This advice app is
 # Live Demo
 [Advice App Demo](https://advice-generator-itsteatv.vercel.app/)
 
+# Live Demo
+![](../advice-app/src/assets/images/advice-app-screenshot.png)
+
 # Technologies Used:
 
 **1. ReactJS:**
