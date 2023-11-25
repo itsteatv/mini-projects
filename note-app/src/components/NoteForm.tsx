@@ -19,7 +19,7 @@ export function NoteForm() {
   };
 
   return (
-    <div className=">=640px:mx-4 <=400px:max-w-xs <=400px:mx-auto">
+    <div className=">=640px:mx-4 <=400px:max-w-[20rem] mx-auto">
       <div className="relative my-6">
         <input
           id="id-01"
