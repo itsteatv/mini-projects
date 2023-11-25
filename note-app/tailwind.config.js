@@ -9,7 +9,11 @@ export default {
       colors: {
         customGray: '#CCCCCC',
         customDark: '#808080'
-      }
+      },
+      screens: {
+        ">=640px": { "min": "9.375em", "max": "25em" },
+        "<=400px": { "min": "20em" },
+      },
     },
   },
   plugins: [],
