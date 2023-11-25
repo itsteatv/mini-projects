@@ -11,8 +11,7 @@ export default {
         customDark: '#808080'
       },
       screens: {
-        ">=640px": { "min": "9.375em", "max": "25em" },
-        "<=400px": { "min": "25em" },
+        ">=345px": { "min": "9.375em", "max": "21.5625em" },
       },
     },
   },
