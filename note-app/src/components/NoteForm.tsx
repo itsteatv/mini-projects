@@ -1,5 +1,5 @@
 import ReactSelect from "react-select/creatable";
-import ButtonGroups from "./ui/buttonGroups";
+import ButtonGroups from "./ui/ButtonGroups";
 
 export function NoteForm() {
   const onHandleSubmit = function (event: FormEvent<HTMLFormElement>) {
@@ -10,11 +10,14 @@ export function NoteForm() {
     <>
       <div className="flex items-center justify-center p-12">
         <div className="mx-auto w-full max-w-[550px]">
+          <h1 className="text-4xl font-Ubuntu text-center mb-4 font-medium text-[#07074D]">
+            New Note
+          </h1>
           <form onClick={onHandleSubmit}>
             <div className="mb-5">
               <label
                 htmlFor="name"
-                className="mb-3 block text-base font-medium text-[#07074D]"
+                className="font-Ubuntu mb-3 block text-base font-medium text-[#07074D]"
               >
                 Title
               </label>
@@ -23,13 +26,13 @@ export function NoteForm() {
                 name="name"
                 id="name"
                 placeholder="Full Name"
-                className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md placeholder:font-Ubuntu"
               />
             </div>
             <div className="mb-5">
               <label
                 htmlFor="name"
-                className="mb-3 block text-base font-medium text-[#07074D]"
+                className="font-Ubuntu mb-3 block text-base font-medium text-[#07074D]"
               >
                 Tags
               </label>
@@ -38,7 +41,7 @@ export function NoteForm() {
             <div className="mb-5">
               <label
                 htmlFor="message"
-                className="mb-3 block text-base font-medium text-[#07074D]"
+                className="font-Ubuntu mb-3 block text-base font-medium text-[#07074D]"
               >
                 Message
               </label>
@@ -47,7 +50,7 @@ export function NoteForm() {
                 name="message"
                 id="message"
                 placeholder="Type your message"
-                className="w-full resize-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                className="w-full resize-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md placeholder:font-Ubuntu"
                 defaultValue={""}
               />
             </div>

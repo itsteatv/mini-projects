@@ -13,6 +13,9 @@ export default {
       screens: {
         ">=345px": { "min": "9.375em", "max": "21.5625em" },
       },
+      fontFamily: {
+        'Ubuntu': ['Ubuntu', 'sans-serif'],
+      },
     },
   },
   plugins: [],
