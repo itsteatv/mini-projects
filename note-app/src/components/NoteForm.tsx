@@ -1,9 +1,24 @@
 import ReactSelect from "react-select/creatable";
-import ButtonGroups from "./ui/ButtonGroups";
+import ButtonGroups from "./UI/ButtonGroups";
+import { useRef, useState } from "react";
+import { NoteData, Tags } from "./Types/types";
 
-export function NoteForm() {
+type NoteFormProps = {
+  onSubmit: (data: NoteData) => void;
+};
+
+export function NoteForm({ onSubmit }: NoteFormProps) {
+  const titleRef = useRef<HTMLInputElement>(null);
+  const markdownRef = useRef<HTMLTextAreaElement>(null);
+  const [selectedTags, setSelectedTags] = useState<Tags[]>([]);
+
   const onHandleSubmit = function (event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+
+    const titleValue = titleRef.current?.value || "";
+    const markdownValue = markdownRef.current?.value || "";
+
+    onSubmit({ title: titleValue, markdown: markdownValue, tags: [] });
   };
 
   return (
@@ -26,7 +41,8 @@ export function NoteForm() {
                 name="name"
                 id="name"
                 placeholder="Full Name"
-                className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md placeholder:font-Ubuntu"
+                ref={titleRef}
+                className="w-full rounded-md border border-[#cccccc] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#2684FF] focus:shadow-md placeholder:font-Ubuntu"
               />
             </div>
             <div className="mb-5">
@@ -36,7 +52,19 @@ export function NoteForm() {
               >
                 Tags
               </label>
-              <ReactSelect isMulti />
+              <ReactSelect
+                value={selectedTags.map((tag) => {
+                  return { label: tag.label, value: tag.id };
+                })}
+                onChange={(tags) => {
+                  setSelectedTags(
+                    tags.map((tag) => {
+                      return { label: tag.label, id: tag.value };
+                    })
+                  );
+                }}
+                isMulti
+              />
             </div>
             <div className="mb-5">
               <label
@@ -50,7 +78,8 @@ export function NoteForm() {
                 name="message"
                 id="message"
                 placeholder="Type your message"
-                className="w-full resize-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md placeholder:font-Ubuntu"
+                ref={markdownRef}
+                className="w-full resize-none rounded-md border border-[#cccccc] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#2684FF] focus:shadow-md placeholder:font-Ubuntu"
                 defaultValue={""}
               />
             </div>
