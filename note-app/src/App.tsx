@@ -1,7 +1,12 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { NewNote } from "./components/NewNote";
+import { useLocalStorage } from "./components/hook/useLocalStorage";
+import { RawNote, Tags } from "./components/Types/types";
 
 function App() {
+  const [notes, setNotes] = useLocalStorage<RawNote[]>("NOTES", []);
+  const [tags, setTags] = useLocalStorage<Tags[]>("TAGS", []);
+
   return (
     <BrowserRouter>
       <Routes>
