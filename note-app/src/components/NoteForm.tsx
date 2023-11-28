@@ -1,7 +1,7 @@
 import ReactSelect from "react-select/creatable";
 import ButtonGroups from "./UI/ButtonGroups";
 import { useRef, useState } from "react";
-import { NoteData, Tags } from "./Types/types";
+import { NoteData, Tag } from "./Types/types";
 
 type NoteFormProps = {
   onSubmit: (data: NoteData) => void;
@@ -10,7 +10,7 @@ type NoteFormProps = {
 export function NoteForm({ onSubmit }: NoteFormProps) {
   const titleRef = useRef<HTMLInputElement>(null);
   const markdownRef = useRef<HTMLTextAreaElement>(null);
-  const [selectedTags, setSelectedTags] = useState<Tags[]>([]);
+  const [selectedTags, setSelectedTags] = useState<Tag[]>([]);
 
   const onHandleSubmit = function (event: FormEvent<HTMLFormElement>) {
     event.preventDefault();

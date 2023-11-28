@@ -1,4 +1,4 @@
-export type Tags = {
+export type Tag = {
   id: string;
   label: string;
 };
@@ -10,7 +10,7 @@ export type Note = {
 export type NoteData = {
   title: string;
   markdown: string;
-  tags: Tags[];
+  tags: Tag[];
 };
 
 export type RawNote = {
