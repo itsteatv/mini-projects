@@ -3,6 +3,7 @@ import { NewNote } from "./components/NewNote";
 import { useLocalStorage } from "./components/hook/useLocalStorage";
 import { NoteData, RawNote, Tag } from "./components/Types/types";
 import { createNote } from "./components/functions/CreateNote";
+import { AddTag } from "./components/functions/AddTag";
 import NotesWithTags from "./components/functions/NotesWithTags";
 
 function App() {
@@ -13,6 +14,10 @@ function App() {
     setNotes((prevNotes) => createNote(data, prevNotes));
   };
 
+  const handleAddTag = (tag: Tag) => {
+    setTags((prevTags) => AddTag(tag, prevTags));
+  };
+
   return (
     <BrowserRouter>
       <Routes>
@@ -21,7 +26,13 @@ function App() {
         <Route path="/" element={<h1>Home</h1>} />
         <Route
           path="/new"
-          element={<NewNote onCreateNote={handleCreateNote} />}
+          element={
+            <NewNote
+              onCreateNote={handleCreateNote}
+              onAddTag={handleAddTag}
+              allAvailableTags={tags}
+            />
+          }
         />
         <Route path="/:id">
           <Route index element={<h1>Show</h1>} />
