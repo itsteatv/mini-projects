@@ -104,7 +104,7 @@ export function NoteForm({
                 defaultValue={""}
               />
             </div>
-            <ButtonGroups />
+            <ButtonGroups firstButton="Submit" secButton="Cancel" />
           </form>
         </div>
       </div>
