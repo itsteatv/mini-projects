@@ -4,6 +4,7 @@ import { useLocalStorage } from "./components/hook/useLocalStorage";
 import { NoteData, RawNote, Tag } from "./components/Types/types";
 import { createNote } from "./components/functions/CreateNote";
 import { AddTag } from "./components/functions/AddTag";
+import { NoteList } from "./components/NoteList";
 import NotesWithTags from "./components/functions/NotesWithTags";
 
 function App() {
@@ -23,7 +24,7 @@ function App() {
       <Routes>
         {/* <Route element={<ProtectedRoute> <AppLayout /> </ProtectedRoute>}> */}
         <Route index path="*" element={<Navigate replace to="/" />} />
-        <Route path="/" element={<h1>Home</h1>} />
+        <Route path="/" element={<NoteList allAvailableTags={tags} />} />
         <Route
           path="/new"
           element={
