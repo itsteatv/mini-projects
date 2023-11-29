@@ -15,7 +15,7 @@ export function NewNote({
   return (
     <div>
       <NoteForm
-        onCreateNote={onCreateNote}
+        onSubmit={onCreateNote}
         onAddTag={onAddTag}
         allAvailableTags={allAvailableTags}
       />

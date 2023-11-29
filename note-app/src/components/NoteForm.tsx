@@ -3,6 +3,7 @@ import ButtonGroups from "./UI/ButtonGroups";
 import { useRef, useState } from "react";
 import { NoteData, Tag } from "./Types/types";
 import { v4 as uuidV4 } from "uuid";
+import { useNavigate } from "react-router-dom";
 
 type NoteFormProps = {
   onSubmit: (data: NoteData) => void;
@@ -19,6 +20,8 @@ export function NoteForm({
   const markdownRef = useRef<HTMLTextAreaElement>(null);
   const [selectedTags, setSelectedTags] = useState<Tag[]>([]);
 
+  const navigate = useNavigate();
+
   const onHandleSubmit = function (event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
@@ -27,6 +30,8 @@ export function NoteForm({
       markdown: markdownRef.current!.value,
       tags: selectedTags,
     });
+
+    navigate("..");
   };
 
   return (
