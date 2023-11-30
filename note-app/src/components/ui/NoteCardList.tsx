@@ -1,4 +1,5 @@
 import { Tag } from "../Types/types";
+import { useNavigate } from "react-router-dom";
 
 type NoteCardListProps = {
   id: string;
@@ -13,6 +14,8 @@ const NoteCardList: React.FC<NoteCardListProps> = ({
   markdown,
   tags,
 }) => {
+  const navigate = useNavigate();
+
   return (
     <section
       key={id}
@@ -46,12 +49,27 @@ const NoteCardList: React.FC<NoteCardListProps> = ({
                   <h2 className="text-2xl leading-snug font-extrabold text-white truncate mb-1 sm:mb-0">
                     {title}
                   </h2>
+                  {tags.map((tag) => {
+                    return (
+                      <h2 className="text-2xl leading-snug font-extrabold text-white truncate mb-1 sm:mb-0">
+                        {tag.label}
+                      </h2>
+                    );
+                  })}
                   <div className="flex-shrink-0 flex items-center space-x-3 sm:ml-2"></div>
                 </div>
                 <div className="flex items-end justify-between whitespace-normal">
                   <div className="max-w-md text-indigo-100">
                     <p className="mb-2">{markdown}</p>
                   </div>
+                </div>
+                <div
+                  onClick={() => navigate(`/${id}`)}
+                  className="flex-shrink-0 flex items-center justify-center text-indigo-600 cursor-pointer w-10 h-10 rounded-full bg-gradient-to-b from-indigo-50 to-indigo-100 hover:from-white hover:to-indigo-50 focus:outline-none focus-visible:from-white focus-visible:to-white transition duration-150 ml-2"
+                >
+                  <span className="block font-bold">
+                    <span className="sr-only">Read more</span> -&gt;
+                  </span>
                 </div>
               </div>
             </div>
