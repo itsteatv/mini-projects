@@ -5,11 +5,13 @@ import { NoteData, RawNote, Tag } from "./components/Types/types";
 import { createNote } from "./components/functions/CreateNote";
 import { AddTag } from "./components/functions/AddTag";
 import { NoteList } from "./components/NoteList";
-import NotesWithTags from "./components/functions/NotesWithTags";
+import { useMemo } from "react";
 
 function App() {
   const [notes, setNotes] = useLocalStorage<RawNote[]>("NOTES", []);
   const [tags, setTags] = useLocalStorage<Tag[]>("TAGS", []);
+
+  console.log(notes);
 
   const handleCreateNote = (data: NoteData) => {
     setNotes((prevNotes) => createNote(data, prevNotes));
@@ -19,12 +21,24 @@ function App() {
     setTags((prevTags) => AddTag(tag, prevTags));
   };
 
+  const notesWithTags = useMemo(() => {
+    return notes.map((note) => {
+      return {
+        ...note,
+        tags: tags.filter((tag) => note.tagIds.includes(tag.id)),
+      };
+    });
+  }, [notes, tags]);
+
   return (
     <BrowserRouter>
       <Routes>
         {/* <Route element={<ProtectedRoute> <AppLayout /> </ProtectedRoute>}> */}
         <Route index path="*" element={<Navigate replace to="/" />} />
-        <Route path="/" element={<NoteList allAvailableTags={tags} />} />
+        <Route
+          path="/"
+          element={<NoteList notes={notesWithTags} allAvailableTags={tags} />}
+        />
         <Route
           path="/new"
           element={
@@ -44,7 +58,6 @@ function App() {
         {/* <Route path="*" element={<PageNotFound />} /> */}
       </Routes>
 
-      <NotesWithTags notes={notes} tags={tags} />
     </BrowserRouter>
   );
 }
