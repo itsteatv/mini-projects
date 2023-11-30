@@ -1,7 +1,8 @@
-import ReactSelect from "react-select";
-import ButtonGroups from "./UI/ButtonGroups";
 import { useState } from "react";
 import { Note, Tag } from "./Types/types";
+import { NoteFilter } from "./functions/NoteFilter";
+import ReactSelect from "react-select";
+import ButtonGroups from "./UI/ButtonGroups";
 import NoteCardList from "./UI/NoteCardList";
 
 type NoteListProps = {
@@ -9,9 +10,11 @@ type NoteListProps = {
   notes: Note[];
 };
 
-export function NoteList({ allAvailableTags }: NoteListProps) {
+export function NoteList({ allAvailableTags, notes }: NoteListProps) {
   const [selectedTags, setSelectedTags] = useState<Tag[]>([]);
   const [title, setTitle] = useState("");
+
+  const filteredNotes = NoteFilter({ notes, title, selectedTags });
 
   return (
     <>
@@ -66,7 +69,14 @@ export function NoteList({ allAvailableTags }: NoteListProps) {
               />
             </div>
           </form>
-          <NoteCardList />
+          {filteredNotes.map((note) => (
+            <NoteCardList
+              id={note.id}
+              title={note.title}
+              markdown={note.markdown}
+              tags={note.tags}
+            />
+          ))}
         </div>
       </div>
     </>
