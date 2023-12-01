@@ -1,12 +1,12 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { NewNote } from "./components/NewNote";
-import { useLocalStorage } from "./components/hook/useLocalStorage";
+import { useLocalStorage } from "./components/hooks/useLocalStorage";
 import { NoteData, RawNote, Tag } from "./components/types/types";
 import { createNote } from "./components/functions/CreateNote";
 import { AddTag } from "./components/functions/AddTag";
 import { NoteList } from "./components/NoteList";
 import { useMemo } from "react";
-import NoteLayout from "./components/NoteLayout";
+import { NoteLayout } from "./components/NoteLayout";
 
 function App() {
   const [notes, setNotes] = useLocalStorage<RawNote[]>("NOTES", []);
