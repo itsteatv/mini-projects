@@ -1,4 +1,4 @@
-import { Tag } from "../Types/types";
+import { Tag } from "../types/types";
 import { useNavigate } from "react-router-dom";
 
 type NoteCardListProps = {

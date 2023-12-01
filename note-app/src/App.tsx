@@ -1,7 +1,7 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { NewNote } from "./components/NewNote";
 import { useLocalStorage } from "./components/hook/useLocalStorage";
-import { NoteData, RawNote, Tag } from "./components/Types/types";
+import { NoteData, RawNote, Tag } from "./components/types/types";
 import { createNote } from "./components/functions/CreateNote";
 import { AddTag } from "./components/functions/AddTag";
 import { NoteList } from "./components/NoteList";

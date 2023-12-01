@@ -1,5 +1,5 @@
 import { NoteForm } from "./NoteForm";
-import { NoteData, Tag } from "./Types/types";
+import { NoteData, Tag } from "./types/types";
 
 type NewNoteProps = {
   onCreateNote: (data: NoteData) => void;

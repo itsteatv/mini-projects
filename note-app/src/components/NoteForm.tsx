@@ -1,7 +1,7 @@
 import ReactSelect from "react-select/creatable";
-import ButtonGroups from "./UI/ButtonGroups";
+import ButtonGroups from "./ui/ButtonGroups";
 import { useRef, useState } from "react";
-import { NoteData, Tag } from "./Types/types";
+import { NoteData, Tag } from "./types/types";
 import { v4 as uuidV4 } from "uuid";
 import { useNavigate } from "react-router-dom";
 

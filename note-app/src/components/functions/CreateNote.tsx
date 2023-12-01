@@ -1,5 +1,5 @@
 import { v4 as uuidV4 } from "uuid";
-import { RawNote, NoteData } from "../Types/types";
+import { RawNote, NoteData } from "../types/types";
 
 export const createNote = (
   { tags, ...data }: NoteData,

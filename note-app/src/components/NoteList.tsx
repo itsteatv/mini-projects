@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { Note, Tag } from "./Types/types";
+import { Note, Tag } from "./types/types";
 import { NoteFilter } from "./functions/NoteFilter";
 import ReactSelect from "react-select";
-import ButtonGroups from "./UI/ButtonGroups";
-import NoteCardList from "./UI/NoteCardList";
+import ButtonGroups from "./ui/ButtonGroups";
+import NoteCardList from "./ui/NoteCardList";
 
 type NoteListProps = {
   allAvailableTags: Tag[];

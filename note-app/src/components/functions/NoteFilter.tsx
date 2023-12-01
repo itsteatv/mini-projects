@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { Note, Tag } from "../Types/types";
+import { Note, Tag } from "../types/types";
 
 interface NoteFilterProps {
   notes: Note[];
