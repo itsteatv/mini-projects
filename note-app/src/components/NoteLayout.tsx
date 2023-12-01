@@ -18,7 +18,7 @@ export function NoteLayout({ notes }: NoteLayoutProps) {
   NOTE MARKDOWN => ${note?.markdown}
   `);
 
-  if (note === null) return <PageNotFound />;
+  if (note === undefined) return <PageNotFound />;
 
   return <Outlet context={note} />;
 }
