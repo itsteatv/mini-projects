@@ -1,4 +1,8 @@
+import { useNavigate } from "react-router-dom";
+
 function PageNotFound() {
+  const navigate = useNavigate();
+
   return (
     <div className="grid h-screen px-4 bg-white place-content-center dark:bg-gray-900">
       <div className="text-center">
@@ -14,12 +18,12 @@ function PageNotFound() {
           We can't find that page.
         </p>
 
-        <a
-          href="#"
-          className="inline-block px-5 py-3 mt-6 text-sm font-medium text-white bg-indigo-600 rounded hover:bg-indigo-700 focus:outline-none focus:ring"
+        <div
+          onClick={() => navigate("/", { replace: true })}
+          className="inline-block px-5 py-3 mt-6 text-sm font-medium cursor-pointer text-white bg-indigo-600 rounded hover:bg-indigo-700 focus:outline-none focus:ring"
         >
           Go Back Home
-        </a>
+        </div>
       </div>
     </div>
   );
