@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Note, Tag } from "./types/types";
 import { NoteFilter } from "./functions/NoteFilter";
+import { useNavigate } from "react-router-dom";
 import ReactSelect from "react-select";
 import ButtonGroups from "./ui/ButtonGroups";
 import NoteCardList from "./ui/NoteCardList";
@@ -14,6 +15,8 @@ export function NoteList({ allAvailableTags, notes }: NoteListProps) {
   const [selectedTags, setSelectedTags] = useState<Tag[]>([]);
   const [title, setTitle] = useState("");
 
+  const navigate = useNavigate();
+
   const filteredNotes = NoteFilter({ notes, title, selectedTags });
 
   return (
@@ -24,7 +27,19 @@ export function NoteList({ allAvailableTags, notes }: NoteListProps) {
             <h1 className=">=465px:text-center text-4xl font-Ubuntu text-left >=465px:mb-4 font-medium text-[#07074D]">
               Notes
             </h1>
-            <ButtonGroups firstButton="Create" secButton="Edit Tags" />
+            <ButtonGroups
+              firstButton={{
+                label: "Create",
+                onClick: () => navigate("/new"),
+                className:
+                  "font-Ubuntu hover:shadow-form rounded-md bg-blue-600 hover:bg-blue-700 transition py-3 px-8 text-base font-semibold text-white outline-none",
+              }}
+              secButton={{
+                label: "Edit Tags",
+                className:
+                  "font-Ubuntu hover:shadow-form rounded-md bg-[#64748b] hover:bg-[#475569] transition py-3 px-8 text-base font-semibold text-white outline-none",
+              }}
+            />
           </div>
           <form className="mb-10">
             <div className="mb-5">
