@@ -31,7 +31,7 @@ export function Note() {
       <ButtonGroups
         firstButton={{
           label: "Edit",
-          onClick: () => navigate("/edit"),
+          onClick: () => navigate(`/${note?.id}/edit`),
           className:
             "font-Ubuntu hover:shadow-form rounded-md bg-blue-600 hover:bg-blue-700 transition py-3 px-8 text-base font-semibold text-white outline-none",
         }}
