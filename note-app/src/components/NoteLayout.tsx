@@ -10,7 +10,13 @@ export function NoteLayout({ notes }: NoteLayoutProps) {
   const { id } = useParams();
 
   const note = notes.find((note) => note.id === id);
-  console.log(id, note);
+  console.log(`
+  ID => ${id}
+  -----------
+  NOTE ID => ${note?.id}
+  NOTE TITLE => ${note?.title}
+  NOTE MARKDOWN => ${note?.markdown}
+  `);
 
   if (note === null) return <PageNotFound />;
 
