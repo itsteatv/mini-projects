@@ -6,6 +6,7 @@ import { createNote } from "./components/functions/CreateNote";
 import { AddTag } from "./components/functions/AddTag";
 import { NoteList } from "./components/NoteList";
 import { useMemo } from "react";
+import NoteLayout from "./components/NoteLayout";
 
 function App() {
   const [notes, setNotes] = useLocalStorage<RawNote[]>("NOTES", []);
@@ -33,7 +34,6 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* <Route element={<ProtectedRoute> <AppLayout /> </ProtectedRoute>}> */}
         <Route index path="*" element={<Navigate replace to="/" />} />
         <Route
           path="/"
@@ -49,15 +49,11 @@ function App() {
             />
           }
         />
-        <Route path="/:id">
+        <Route path="/:id" element={<NoteLayout />}>
           <Route index element={<h1>Show</h1>} />
           <Route path="edit" element={<h1>Edit</h1>} />
         </Route>
-        {/* </Route> */}
-
-        {/* <Route path="*" element={<PageNotFound />} /> */}
       </Routes>
-
     </BrowserRouter>
   );
 }
