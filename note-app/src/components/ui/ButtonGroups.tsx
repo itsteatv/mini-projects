@@ -1,38 +1,42 @@
-import { useNavigate } from "react-router-dom";
-
 type ButtonGroupsProps = {
-  firstButton: string;
-  secButton: string;
+  firstButton: ButtonProps;
+  secButton: ButtonProps;
+  thirdButton?: ButtonProps;
 };
 
-export default function ButtonGroups({
+type ButtonProps = {
+  label: string;
+  onClick?: () => void;
+  className: string;
+};
+
+const ButtonGroups: React.FC<ButtonGroupsProps> = ({
   firstButton,
   secButton,
-}: ButtonGroupsProps) {
-  const navigate = useNavigate();
-
-  const handleCreateClick = () => {
-    navigate("/new");
-  };
-
+  thirdButton,
+}) => {
   return (
     <>
       <div className=">=345px:flex-col >=445px:flex-col >=465px:flex-col flex gap-4 justify-end">
-        <button
-          type="submit"
-          onClick={handleCreateClick}
-          className="font-Ubuntu hover:shadow-form rounded-md bg-blue-600 hover:bg-blue-700 transition py-3 px-8 text-base font-semibold text-white outline-none"
-        >
-          {firstButton}
+        <button onClick={firstButton.onClick} className={firstButton.className}>
+          {firstButton.label}
         </button>
-        <button
-          type="reset"
-          onClick={() => navigate("..")}
-          className="font-Ubuntu hover:shadow-form rounded-md bg-[#64748b] hover:bg-[#475569] transition py-3 px-8 text-base font-semibold text-white outline-none"
-        >
-          {secButton}
+
+        <button onClick={secButton.onClick} className={secButton.className}>
+          {secButton.label}
         </button>
+
+        {thirdButton && (
+          <button
+            onClick={thirdButton.onClick}
+            className={thirdButton.className}
+          >
+            {thirdButton.label}
+          </button>
+        )}
       </div>
     </>
   );
-}
+};
+
+export default ButtonGroups;
