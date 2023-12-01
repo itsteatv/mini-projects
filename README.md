@@ -21,6 +21,7 @@ These mini projects serve as a playground for experimenting with new technologie
 1. [Project 1: 3 column preview card component](https://github.com/itsteatv/mini-projects/tree/master/3-column%20preview%20card%20component)
 2. [Project 2: profile card component](https://github.com/itsteatv/mini-projects/tree/master/profile-card-component)
 3. [Project 3: advice generator](https://github.com/itsteatv/mini-projects/tree/master/advice-app)
+4. [Project 4: note app](https://github.com/itsteatv/mini-projects/tree/master/note-app)
 
 ## How to Run
 
