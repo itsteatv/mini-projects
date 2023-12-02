@@ -1,6 +1,7 @@
 import { useNote } from "./hooks/useNote";
 import { useNavigate } from "react-router-dom";
 import ButtonGroups from "./ui/ButtonGroups";
+import Markdown from "react-markdown";
 
 export function Note() {
   const note = useNote();
@@ -47,6 +48,7 @@ export function Note() {
             "bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded",
         }}
       />
+      <Markdown className="mt-5">{note?.markdown}</Markdown>
     </div>
   );
 }
