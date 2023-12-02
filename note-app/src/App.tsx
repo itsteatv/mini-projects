@@ -15,6 +15,8 @@ function App() {
   const [notes, setNotes] = useLocalStorage<RawNote[]>("NOTES", []);
   const [tags, setTags] = useLocalStorage<Tag[]>("TAGS", []);
 
+  console.log(notes);
+
   const handleCreateNote = (data: NoteData) => {
     setNotes((prevNotes) => createNote(data, prevNotes));
   };
@@ -25,6 +27,10 @@ function App() {
 
   const handleNoteUpdate = (id: string, { tags, ...data }: NoteData) => {
     setNotes((prevNotes) => updateNote(prevNotes, id, { tags, ...data }));
+  };
+
+  const handleDeleteNote = (id: string) => {
+    setNotes((prevNotes) => prevNotes.filter((note) => note.id !== id));
   };
 
   const notesWithTags = useMemo(() => {
@@ -55,7 +61,7 @@ function App() {
           }
         />
         <Route path=":id" element={<NoteLayout notes={notesWithTags} />}>
-          <Route index element={<Note />} />
+          <Route index element={<Note handleDeleteNote={handleDeleteNote} />} />
           <Route
             path="edit"
             element={

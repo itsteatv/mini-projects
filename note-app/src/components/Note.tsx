@@ -3,7 +3,11 @@ import { useNavigate } from "react-router-dom";
 import ButtonGroups from "./ui/ButtonGroups";
 import Markdown from "react-markdown";
 
-export function Note() {
+type NoteProps = {
+  handleDeleteNote(id: string): void;
+};
+
+export function Note({ handleDeleteNote }: handleDeleteNote) {
   const note = useNote();
   const navigate = useNavigate();
 
@@ -30,6 +34,8 @@ export function Note() {
           </h2>
         ))}
       <ButtonGroups
+        handleDeleteNote={handleDeleteNote}
+        id={note.id}
         firstButton={{
           label: "Edit",
           onClick: () => navigate(`/${note?.id}/edit`),

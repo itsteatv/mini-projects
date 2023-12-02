@@ -1,7 +1,11 @@
+import { useNavigate } from "react-router-dom";
+
 type ButtonGroupsProps = {
   firstButton: ButtonProps;
   secButton: ButtonProps;
   thirdButton?: ButtonProps;
+  handleDeleteNote: (id: string) => void;
+  id: string;
 };
 
 type ButtonProps = {
@@ -14,7 +18,11 @@ const ButtonGroups: React.FC<ButtonGroupsProps> = ({
   firstButton,
   secButton,
   thirdButton,
+  handleDeleteNote,
+  id,
 }) => {
+  const navigate = useNavigate();
+
   return (
     <>
       <div className=">=345px:flex-col >=445px:flex-col >=465px:flex-col flex gap-4 justify-end">
@@ -22,7 +30,14 @@ const ButtonGroups: React.FC<ButtonGroupsProps> = ({
           {firstButton.label}
         </button>
 
-        <button onClick={secButton.onClick} className={secButton.className}>
+        <button
+          onClick={() => {
+            secButton.onClick?.();
+            handleDeleteNote(id);
+            navigate("/");
+          }}
+          className={secButton.className}
+        >
           {secButton.label}
         </button>
 
