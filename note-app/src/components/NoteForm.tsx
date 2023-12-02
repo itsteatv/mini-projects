@@ -9,16 +9,19 @@ type NoteFormProps = {
   onSubmit: (data: NoteData) => void;
   onAddTag: (tag: Tag) => void;
   allAvailableTags: Tag[];
-};
+} & Partial<NoteData>;
 
 export function NoteForm({
   onSubmit,
   onAddTag,
   allAvailableTags,
+  title = "",
+  markdown = "",
+  tags = [],
 }: NoteFormProps) {
   const titleRef = useRef<HTMLInputElement>(null);
   const markdownRef = useRef<HTMLTextAreaElement>(null);
-  const [selectedTags, setSelectedTags] = useState<Tag[]>([]);
+  const [selectedTags, setSelectedTags] = useState<Tag[]>(tags);
 
   const navigate = useNavigate();
 
@@ -55,6 +58,7 @@ export function NoteForm({
                 id="name"
                 placeholder="Full Name"
                 ref={titleRef}
+                defaultValue={title}
                 className="w-full rounded-md border border-[#cccccc] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#2684FF] focus:shadow-md placeholder:font-Ubuntu"
               />
             </div>
@@ -66,6 +70,7 @@ export function NoteForm({
                 Tags
               </label>
               <ReactSelect
+                defaultValue={tags}
                 onCreateOption={(label) => {
                   const newTag = { id: uuidV4(), label };
                   onAddTag(newTag);
@@ -100,8 +105,8 @@ export function NoteForm({
                 id="message"
                 placeholder="Type your message"
                 ref={markdownRef}
+                defaultValue={markdown}
                 className="w-full resize-none rounded-md border border-[#cccccc] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#2684FF] focus:shadow-md placeholder:font-Ubuntu"
-                defaultValue={""}
               />
             </div>
             <ButtonGroups
