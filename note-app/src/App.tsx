@@ -8,6 +8,8 @@ import { NoteList } from "./components/NoteList";
 import { useMemo } from "react";
 import { NoteLayout } from "./components/NoteLayout";
 import { Note } from "./components/Note";
+import { EditNote } from "./components/EditNote";
+import { updateNote } from "./components/functions/UpdateNote";
 
 function App() {
   const [notes, setNotes] = useLocalStorage<RawNote[]>("NOTES", []);
@@ -19,6 +21,10 @@ function App() {
 
   const handleAddTag = (tag: Tag) => {
     setTags((prevTags) => AddTag(tag, prevTags));
+  };
+
+  const handleNoteUpdate = (id: string, { tags, ...data }: NoteData) => {
+    setNotes((prevNotes) => updateNote(prevNotes, id, { tags, ...data }));
   };
 
   const notesWithTags = useMemo(() => {
@@ -48,9 +54,18 @@ function App() {
             />
           }
         />
-        <Route path="/:id" element={<NoteLayout notes={notesWithTags} />}>
+        <Route path=":id" element={<NoteLayout notes={notesWithTags} />}>
           <Route index element={<Note />} />
-          <Route path="edit" element={<h1>Edit</h1>} />
+          <Route
+            path="edit"
+            element={
+              <EditNote
+                onEditNote={handleNoteUpdate}
+                onAddTag={handleAddTag}
+                allAvailableTags={tags}
+              />
+            }
+          />
         </Route>
       </Routes>
     </BrowserRouter>
