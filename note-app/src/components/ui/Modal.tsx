@@ -1,12 +1,29 @@
-function Modal() {
+import { Tag } from "../types/types";
+
+type ModalProps = {
+  allAvailableTags: Tag[];
+};
+
+function Modal({ allAvailableTags }: ModalProps) {
   return (
     <div>
       <dialog id="my_modal_1" className="modal">
         <div className="modal-box">
-          <h3 className="font-bold text-lg">Hello!</h3>
-          <p className="py-4">
-            Press ESC key or click the button below to close
-          </p>
+          <h3 className="font-bold text-lg">Edit Tags</h3>
+          {allAvailableTags.map((tag) => (
+            <form key={tag.id}>
+              <div className="mt-4">
+                <input
+                  defaultValue={tag.label}
+                  type="text"
+                  name="name"
+                  id="name"
+                  placeholder="Full Name"
+                  className="w-full rounded-md border border-[#cccccc] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#2684FF] focus:shadow-md placeholder:font-Ubuntu"
+                />
+              </div>
+            </form>
+          ))}
           <div className="modal-action">
             <form method="dialog">
               {/* if there is a button in form, it will close the modal */}

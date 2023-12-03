@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Note, Tag } from "./types/types";
 import { NoteFilter } from "./functions/NoteFilter";
 import { useNavigate } from "react-router-dom";
@@ -20,6 +20,14 @@ export function NoteList({ allAvailableTags, notes }: NoteListProps) {
   const navigate = useNavigate();
 
   const filteredNotes = NoteFilter({ notes, title, selectedTags });
+
+  useEffect(() => {
+    // This effect runs once the component is mounted
+    const modal = document.getElementById("my_modal_1");
+    if (showModal && modal) {
+      modal.showModal();
+    }
+  }, [showModal]);
 
   return (
     <>
@@ -103,7 +111,7 @@ export function NoteList({ allAvailableTags, notes }: NoteListProps) {
           ))}
         </div>
       </div>
-      {showModal && <Modal />}
+      {showModal && <Modal allAvailableTags={allAvailableTags} />}
     </>
   );
 }
