@@ -7,7 +7,7 @@ type NoteProps = {
   handleDeleteNote(id: string): void;
 };
 
-export function Note({ handleDeleteNote }: handleDeleteNote) {
+export function Note({ handleDeleteNote }: NoteProps) {
   const note = useNote();
   const navigate = useNavigate();
 
