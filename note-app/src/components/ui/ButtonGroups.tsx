@@ -30,16 +30,27 @@ const ButtonGroups: React.FC<ButtonGroupsProps> = ({
           {firstButton.label}
         </button>
 
-        <button
-          onClick={() => {
-            secButton.onClick?.();
-            handleDeleteNote(id);
-            navigate("/");
-          }}
-          className={secButton.className}
-        >
-          {secButton.label}
-        </button>
+        {secButton.label === "Edit Tags" ? (
+          <button
+            onClick={() => {
+              secButton.onClick?.();
+            }}
+            className={secButton.className}
+          >
+            {secButton.label}
+          </button>
+        ) : (
+          <button
+            onClick={() => {
+              secButton.onClick?.();
+              handleDeleteNote(id);
+              navigate("/");
+            }}
+            className={secButton.className}
+          >
+            {secButton.label}
+          </button>
+        )}
 
         {thirdButton && (
           <button
