@@ -1,4 +1,5 @@
 import { Tag } from "../types/types";
+import { MdDeleteForever } from "react-icons/md";
 
 type ModalProps = {
   allAvailableTags: Tag[];
@@ -12,7 +13,7 @@ function Modal({ allAvailableTags }: ModalProps) {
           <h3 className="font-bold text-lg">Edit Tags</h3>
           {allAvailableTags.map((tag) => (
             <form key={tag.id}>
-              <div className="mt-4">
+              <div className="mt-4 flex items-center gap-4">
                 <input
                   defaultValue={tag.label}
                   type="text"
@@ -21,6 +22,7 @@ function Modal({ allAvailableTags }: ModalProps) {
                   placeholder="Full Name"
                   className="w-full rounded-md border border-[#cccccc] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#2684FF] focus:shadow-md placeholder:font-Ubuntu"
                 />
+                <MdDeleteForever className="scale-150 cursor-pointer" />
               </div>
             </form>
           ))}
