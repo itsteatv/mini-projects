@@ -10,6 +10,7 @@ import { NoteLayout } from "./components/NoteLayout";
 import { Note } from "./components/Note";
 import { EditNote } from "./components/EditNote";
 import { updateNote } from "./components/functions/UpdateNote";
+import { UpdateTag } from "./components/functions/UpdateTag";
 
 function App() {
   const [notes, setNotes] = useLocalStorage<RawNote[]>("NOTES", []);
@@ -17,6 +18,7 @@ function App() {
 
   console.log(notes);
 
+  // CREATE
   const handleCreateNote = (data: NoteData) => {
     setNotes((prevNotes) => createNote(data, prevNotes));
   };
@@ -25,12 +27,22 @@ function App() {
     setTags((prevTags) => AddTag(tag, prevTags));
   };
 
+  // UPDATE
   const handleNoteUpdate = (id: string, { tags, ...data }: NoteData) => {
     setNotes((prevNotes) => updateNote(prevNotes, id, { tags, ...data }));
   };
 
+  const handleUpdateTag = (id: string, label: string) => {
+    setTags((prevTags) => UpdateTag(prevTags, id, label));
+  };
+
+  // DELETE
   const handleDeleteNote = (id: string) => {
     setNotes((prevNotes) => prevNotes.filter((note) => note.id !== id));
+  };
+
+  const handleDeleteTag = (id: string) => {
+    setTags((prevTags) => prevTags.filter((tag) => tag.id !== id));
   };
 
   const notesWithTags = useMemo(() => {
@@ -48,7 +60,14 @@ function App() {
         <Route index path="*" element={<Navigate replace to="/" />} />
         <Route
           path="/"
-          element={<NoteList notes={notesWithTags} allAvailableTags={tags} />}
+          element={
+            <NoteList
+              handleUpdateTag={handleUpdateTag}
+              handleDeleteTag={handleDeleteTag}
+              notes={notesWithTags}
+              allAvailableTags={tags}
+            />
+          }
         />
         <Route
           path="/new"

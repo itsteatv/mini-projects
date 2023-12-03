@@ -10,9 +10,16 @@ import Modal from "./ui/Modal";
 type NoteListProps = {
   allAvailableTags: Tag[];
   notes: Note[];
+  handleDeleteTag(id: string): void;
+  handleUpdateTag(id: string, label: string): void;
 };
 
-export function NoteList({ allAvailableTags, notes }: NoteListProps) {
+export function NoteList({
+  allAvailableTags,
+  notes,
+  handleDeleteTag,
+  handleUpdateTag,
+}: NoteListProps) {
   const [selectedTags, setSelectedTags] = useState<Tag[]>([]);
   const [title, setTitle] = useState("");
   const [showModal, setShowModal] = useState(false);
@@ -22,7 +29,6 @@ export function NoteList({ allAvailableTags, notes }: NoteListProps) {
   const filteredNotes = NoteFilter({ notes, title, selectedTags });
 
   useEffect(() => {
-    // This effect runs once the component is mounted
     const modal = document.getElementById("my_modal_1");
     if (showModal && modal) {
       modal.showModal();
@@ -111,7 +117,13 @@ export function NoteList({ allAvailableTags, notes }: NoteListProps) {
           ))}
         </div>
       </div>
-      {showModal && <Modal allAvailableTags={allAvailableTags} />}
+      {showModal && (
+        <Modal
+          handleDeleteTag={handleDeleteTag}
+          handleUpdateTag={handleUpdateTag}
+          allAvailableTags={allAvailableTags}
+        />
+      )}
     </>
   );
 }

@@ -1,4 +1,4 @@
-import { RawNote, Tag, NoteData } from "../types/types";
+import { RawNote, NoteData } from "../types/types";
 
 export const updateNote = (
   notes: RawNote[],

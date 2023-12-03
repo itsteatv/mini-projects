@@ -3,9 +3,17 @@ import { MdDeleteForever } from "react-icons/md";
 
 type ModalProps = {
   allAvailableTags: Tag[];
+  handleDeleteTag(id: string): void;
+  handleUpdateTag(id: string, label: string): void;
 };
 
-function Modal({ allAvailableTags }: ModalProps) {
+function Modal({
+  allAvailableTags,
+  handleDeleteTag,
+  handleUpdateTag,
+}: ModalProps) {
+  console.log(allAvailableTags);
+
   return (
     <div>
       <dialog id="my_modal_1" className="modal">
@@ -15,14 +23,18 @@ function Modal({ allAvailableTags }: ModalProps) {
             <form key={tag.id}>
               <div className="mt-4 flex items-center gap-4">
                 <input
-                  defaultValue={tag.label}
+                  value={tag.label}
+                  onChange={(e) => handleUpdateTag(tag.id, e.target.value)}
                   type="text"
                   name="name"
                   id="name"
                   placeholder="Full Name"
                   className="w-full rounded-md border border-[#cccccc] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#2684FF] focus:shadow-md placeholder:font-Ubuntu"
                 />
-                <MdDeleteForever className="scale-150 cursor-pointer" />
+                <MdDeleteForever
+                  onClick={() => handleDeleteTag(tag.id)}
+                  className="scale-150 cursor-pointer"
+                />
               </div>
             </form>
           ))}
