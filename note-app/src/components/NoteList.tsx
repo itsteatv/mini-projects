@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import ReactSelect from "react-select";
 import ButtonGroups from "./ui/ButtonGroups";
 import NoteCardList from "./ui/NoteCardList";
+import Modal from "./ui/Modal";
 
 type NoteListProps = {
   allAvailableTags: Tag[];
@@ -14,6 +15,7 @@ type NoteListProps = {
 export function NoteList({ allAvailableTags, notes }: NoteListProps) {
   const [selectedTags, setSelectedTags] = useState<Tag[]>([]);
   const [title, setTitle] = useState("");
+  const [showModal, setShowModal] = useState(false);
 
   const navigate = useNavigate();
 
@@ -36,6 +38,13 @@ export function NoteList({ allAvailableTags, notes }: NoteListProps) {
               }}
               secButton={{
                 label: "Edit Tags",
+                onClick: () => {
+                  setShowModal(true);
+                  const modal = document.getElementById("my_modal_1");
+                  if (modal) {
+                    modal.showModal();
+                  }
+                },
                 className:
                   "font-Ubuntu hover:shadow-form rounded-md bg-[#64748b] hover:bg-[#475569] transition py-3 px-8 text-base font-semibold text-white outline-none",
               }}
@@ -94,6 +103,7 @@ export function NoteList({ allAvailableTags, notes }: NoteListProps) {
           ))}
         </div>
       </div>
+      {showModal && <Modal />}
     </>
   );
 }
