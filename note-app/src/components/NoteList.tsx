@@ -40,7 +40,7 @@ export function NoteList({
       <div className="flex items-center p-12 >=465px:flex-col">
         <div className="mx-auto w-full max-w-[550px]">
           <div className=">=465px:flex-col flex justify-between items-center mb-10">
-            <h1 className=">=465px:text-center text-4xl font-Ubuntu text-left >=465px:mb-4 font-medium text-[#07074D]">
+            <h1 className=">=465px:text-center text-4xl font-Ubuntu text-left >=465px:mb-4 font-medium dark:text-white text-[#07074D]">
               Notes
             </h1>
             <ButtonGroups
@@ -67,7 +67,7 @@ export function NoteList({
             <div className="mb-5">
               <label
                 htmlFor="name"
-                className="font-Ubuntu mb-3 block text-base font-medium text-[#07074D]"
+                className="font-Ubuntu mb-3 block text-base font-medium dark:text-white text-[#07074D]"
               >
                 Title
               </label>
@@ -84,7 +84,7 @@ export function NoteList({
             <div className="mb-5">
               <label
                 htmlFor="name"
-                className="font-Ubuntu mb-3 block text-base font-medium text-[#07074D]"
+                className="font-Ubuntu mb-3 block text-base font-medium dark:text-white text-[#07074D]"
               >
                 Tags
               </label>

@@ -18,7 +18,7 @@ function Modal({
     <div>
       <dialog id="my_modal_1" className="modal">
         <div className="modal-box">
-          <h3 className="font-bold text-lg">Edit Tags</h3>
+          <h3 className="font-bold text-lg dark:text-white">Edit Tags</h3>
           {allAvailableTags.map((tag) => (
             <form key={tag.id}>
               <div className="mt-4 flex items-center gap-4">
@@ -41,7 +41,7 @@ function Modal({
           <div className="modal-action">
             <form method="dialog">
               {/* if there is a button in form, it will close the modal */}
-              <button className="btn font-Ubuntu">Close</button>
+              <button className="btn font-Ubuntu dark:text-white">Close</button>
             </form>
           </div>
         </div>

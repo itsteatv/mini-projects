@@ -41,14 +41,14 @@ export function NoteForm({
     <>
       <div className="flex items-center justify-center p-12">
         <div className="mx-auto w-full max-w-[550px]">
-          <h1 className="text-4xl font-Ubuntu text-center mb-4 font-medium text-[#07074D]">
+          <h1 className="text-4xl font-Ubuntu text-center mb-4 font-medium dark:text-white text-[#07074D]">
             New Note
           </h1>
           <form onSubmit={onHandleSubmit}>
             <div className="mb-5">
               <label
                 htmlFor="name"
-                className="font-Ubuntu mb-3 block text-base font-medium text-[#07074D]"
+                className="font-Ubuntu mb-3 block text-base font-medium dark:text-white text-[#07074D]"
               >
                 Title
               </label>
@@ -65,7 +65,7 @@ export function NoteForm({
             <div className="mb-5">
               <label
                 htmlFor="name"
-                className="font-Ubuntu mb-3 block text-base font-medium text-[#07074D]"
+                className="font-Ubuntu mb-3 block text-base font-medium dark:text-white text-[#07074D]"
               >
                 Tags
               </label>
@@ -103,7 +103,7 @@ export function NoteForm({
             <div className="mb-5">
               <label
                 htmlFor="message"
-                className="font-Ubuntu mb-3 block text-base font-medium text-[#07074D]"
+                className="font-Ubuntu mb-3 block text-base font-medium dark:text-white text-[#07074D]"
               >
                 Message
               </label>
