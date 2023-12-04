@@ -78,7 +78,7 @@ export function NoteList({
                 name="name"
                 id="name"
                 placeholder="Full Name"
-                className="w-full rounded-md border border-[#cccccc] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#2684FF] focus:shadow-md placeholder:font-Ubuntu"
+                className="input input-bordered w-full placeholder:font-Ubuntu"
               />
             </div>
             <div className="mb-5">
@@ -103,6 +103,14 @@ export function NoteList({
                   );
                 }}
                 isMulti
+                theme={(theme) => ({
+                  ...theme,
+                  colors: {
+                    ...theme.colors,
+                    primary25: "black",
+                    primary: "black",
+                  },
+                })}
               />
             </div>
           </form>

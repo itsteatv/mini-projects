@@ -59,7 +59,7 @@ export function NoteForm({
                 placeholder="Full Name"
                 ref={titleRef}
                 defaultValue={title}
-                className="w-full rounded-md border border-[#cccccc] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#2684FF] focus:shadow-md placeholder:font-Ubuntu"
+                className="input input-bordered w-full placeholder:font-Ubuntu"
               />
             </div>
             <div className="mb-5">
@@ -90,6 +90,14 @@ export function NoteForm({
                   );
                 }}
                 isMulti
+                theme={(theme) => ({
+                  ...theme,
+                  colors: {
+                    ...theme.colors,
+                    primary25: "black",
+                    primary: "black",
+                  },
+                })}
               />
             </div>
             <div className="mb-5">
@@ -106,7 +114,7 @@ export function NoteForm({
                 placeholder="Type your message"
                 ref={markdownRef}
                 defaultValue={markdown}
-                className="w-full resize-none rounded-md border border-[#cccccc] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#2684FF] focus:shadow-md placeholder:font-Ubuntu"
+                className="w-full resize-none textarea textarea-bordered placeholder:font-Ubuntu"
               />
             </div>
             <ButtonGroups

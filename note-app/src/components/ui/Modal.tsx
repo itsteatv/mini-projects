@@ -29,7 +29,7 @@ function Modal({
                   name="name"
                   id="name"
                   placeholder="Full Name"
-                  className="w-full rounded-md border border-[#cccccc] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#2684FF] focus:shadow-md placeholder:font-Ubuntu"
+                  className="input input-bordered w-full placeholder:font-Ubuntu"
                 />
                 <MdDeleteForever
                   onClick={() => handleDeleteTag(tag.id)}
