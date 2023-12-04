@@ -112,13 +112,11 @@ export function NoteForm({
             <ButtonGroups
               firstButton={{
                 label: "Submit",
-                className:
-                  "font-Ubuntu hover:shadow-form rounded-md bg-blue-600 hover:bg-blue-700 transition py-3 px-8 text-base font-semibold text-white outline-none",
+                className: "font-Ubuntu btn btn-primary text-white",
               }}
               secButton={{
                 label: "Cancel",
-                className:
-                  "font-Ubuntu hover:shadow-form rounded-md bg-[#64748b] hover:bg-[#475569] transition py-3 px-8 text-base font-semibold text-white outline-none",
+                className: "font-Ubuntu btn btn-active btn-ghost",
               }}
             />
           </form>

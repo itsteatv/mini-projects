@@ -39,19 +39,16 @@ export function Note({ handleDeleteNote }: NoteProps) {
         firstButton={{
           label: "Edit",
           onClick: () => navigate(`/${note?.id}/edit`),
-          className:
-            "font-Ubuntu hover:shadow-form rounded-md bg-blue-600 hover:bg-blue-700 transition py-3 px-8 text-base font-semibold text-white outline-none",
+          className: "font-Ubuntu btn btn-primary text-white",
         }}
         secButton={{
           label: "Delete",
-          className:
-            "font-Ubuntu hover:shadow-form rounded-md bg-red-600 hover:bg-red-700 transition py-3 px-8 text-base font-semibold text-white outline-none",
+          className: "font-Ubuntu btn btn-error",
         }}
         thirdButton={{
           label: "Back",
           onClick: () => navigate("/"),
-          className:
-            "bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded",
+          className: "font-Ubuntu btn btn-active btn-ghost",
         }}
       />
       <Markdown className="mt-5">{note?.markdown}</Markdown>
