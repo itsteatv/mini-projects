@@ -38,7 +38,7 @@ export function NoteList({
   return (
     <>
       <div className="flex items-center p-12 >=465px:flex-col">
-        <div className="mx-auto w-full max-w-[550px]">
+        <div className="mx-auto w-full max-w-[550px] flex flex-col gap-4">
           <div className=">=465px:flex-col flex justify-between items-center mb-10">
             <h1 className=">=465px:text-center text-4xl font-Ubuntu text-left >=465px:mb-4 font-medium dark:text-white text-[#07074D]">
               Notes
