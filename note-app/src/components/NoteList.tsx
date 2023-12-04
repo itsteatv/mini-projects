@@ -47,7 +47,7 @@ export function NoteList({
               firstButton={{
                 label: "Create",
                 onClick: () => navigate("/new"),
-                className: "font-Ubuntu btn btn-primary text-white",
+                className: "font-Ubuntu btn btn-primary dark:text-white",
               }}
               secButton={{
                 label: "Edit Tags",
@@ -58,7 +58,8 @@ export function NoteList({
                     modal.showModal();
                   }
                 },
-                className: "font-Ubuntu btn btn-active btn-ghost",
+                className:
+                  "font-Ubuntu btn btn-active btn-ghost dark:text-white ",
               }}
             />
           </div>

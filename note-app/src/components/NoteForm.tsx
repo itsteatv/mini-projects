@@ -112,11 +112,12 @@ export function NoteForm({
             <ButtonGroups
               firstButton={{
                 label: "Submit",
-                className: "font-Ubuntu btn btn-primary text-white",
+                className: "font-Ubuntu btn btn-primary dark:text-white",
               }}
               secButton={{
                 label: "Cancel",
-                className: "font-Ubuntu btn btn-active btn-ghost",
+                className:
+                  "font-Ubuntu btn btn-active btn-ghost dark:text-white",
               }}
             />
           </form>
