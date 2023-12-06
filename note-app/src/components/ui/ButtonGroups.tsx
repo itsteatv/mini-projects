@@ -4,7 +4,7 @@ type ButtonGroupsProps = {
   firstButton: ButtonProps;
   secButton: ButtonProps;
   thirdButton?: ButtonProps;
-  handleDeleteNote: (id: string) => void;
+  handleDeleteNote?: (id: string) => void;
   id: string;
 };
 
@@ -30,27 +30,16 @@ const ButtonGroups: React.FC<ButtonGroupsProps> = ({
           {firstButton.label}
         </button>
 
-        {secButton.label === "Edit Tags" ? (
-          <button
-            onClick={() => {
-              secButton.onClick?.();
-            }}
-            className={secButton.className}
-          >
-            {secButton.label}
-          </button>
-        ) : (
-          <button
-            onClick={() => {
-              secButton.onClick?.();
-              handleDeleteNote(id);
-              navigate("/");
-            }}
-            className={secButton.className}
-          >
-            {secButton.label}
-          </button>
-        )}
+        <button
+          onClick={() => {
+            secButton.onClick?.();
+            handleDeleteNote?.(id);
+            navigate("/");
+          }}
+          className={secButton.className}
+        >
+          {secButton.label}
+        </button>
 
         {thirdButton && (
           <button
