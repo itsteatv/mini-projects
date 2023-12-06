@@ -1,6 +1,6 @@
 import ReactSelect from "react-select/creatable";
 import ButtonGroups from "./ui/ButtonGroups";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { NoteData, Tag } from "./types/types";
 import { v4 as uuidV4 } from "uuid";
 import { useNavigate } from "react-router-dom";
@@ -22,8 +22,17 @@ export function NoteForm({
   const titleRef = useRef<HTMLInputElement>(null);
   const markdownRef = useRef<HTMLTextAreaElement>(null);
   const [selectedTags, setSelectedTags] = useState<Tag[]>(tags);
+  const [isFormValid, setIsFormValid] = useState(false);
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    setIsFormValid(
+      !!titleRef.current?.value &&
+        !!markdownRef.current?.value &&
+        selectedTags.length > 0
+    );
+  }, [titleRef.current?.value, markdownRef.current?.value, selectedTags]);
 
   const onHandleSubmit = function (event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -35,6 +44,17 @@ export function NoteForm({
     });
 
     navigate("..");
+  };
+
+  const handleInputChange = (
+    event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    // Enable/disable the submit button based on form validity
+    setIsFormValid(
+      !!titleRef.current?.value &&
+        !!markdownRef.current?.value &&
+        selectedTags.length > 0
+    );
   };
 
   return (
@@ -59,6 +79,7 @@ export function NoteForm({
                 placeholder="Full Name"
                 ref={titleRef}
                 defaultValue={title}
+                onChange={handleInputChange}
                 className="input input-bordered w-full placeholder:font-Ubuntu"
               />
             </div>
@@ -114,13 +135,16 @@ export function NoteForm({
                 placeholder="Type your message"
                 ref={markdownRef}
                 defaultValue={markdown}
+                onChange={handleInputChange}
                 className="w-full resize-none textarea textarea-bordered placeholder:font-Ubuntu"
               />
             </div>
             <ButtonGroups
               firstButton={{
                 label: "Submit",
-                className: "font-Ubuntu btn btn-primary dark:text-white",
+                className: `font-Ubuntu btn btn-primary dark:text-white ${
+                  !isFormValid ? "btn-disabled cursor-not-allowed" : ""
+                }`,
               }}
               secButton={{
                 label: "Cancel",
