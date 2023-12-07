@@ -22,8 +22,8 @@ export function EditNote({
 
   return (
     <div>
-      <h1>Edit Note</h1>
       <NoteForm
+        mode="edit"
         title={note.title}
         markdown={note.markdown}
         tags={note.tags}

@@ -9,6 +9,7 @@ type NoteFormProps = {
   onSubmit: (data: NoteData) => void;
   onAddTag: (tag: Tag) => void;
   allAvailableTags: Tag[];
+  mode?: "new" | "edit";
 } & Partial<NoteData>;
 
 export function NoteForm({
@@ -18,6 +19,7 @@ export function NoteForm({
   title = "",
   markdown = "",
   tags = [],
+  mode = "new",
 }: NoteFormProps) {
   const titleRef = useRef<HTMLInputElement>(null);
   const markdownRef = useRef<HTMLTextAreaElement>(null);
@@ -46,10 +48,7 @@ export function NoteForm({
     navigate("..");
   };
 
-  const handleInputChange = (
-    event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    // Enable/disable the submit button based on form validity
+  const handleInputChange = () => {
     setIsFormValid(
       !!titleRef.current?.value &&
         !!markdownRef.current?.value &&
@@ -62,7 +61,7 @@ export function NoteForm({
       <div className="flex items-center justify-center p-12">
         <div className="mx-auto w-full max-w-[550px]">
           <h1 className="text-4xl font-Ubuntu text-center mb-4 font-medium dark:text-white text-[#07074D]">
-            New Note
+            {mode === "new" ? "New Note" : "Edit Note"}
           </h1>
           <form onSubmit={onHandleSubmit}>
             <div className="mb-5">
