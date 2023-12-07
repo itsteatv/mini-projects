@@ -11,6 +11,8 @@ export function Note({ handleDeleteNote }: NoteProps) {
   const note = useNote();
   const navigate = useNavigate();
 
+  const tagsBadge = note?.tags?.length >= 1;
+
   console.log(note);
 
   return (
@@ -19,13 +21,24 @@ export function Note({ handleDeleteNote }: NoteProps) {
         <figure>
           <blockquote className="p-6 text-lg leading-relaxed">
             <cite className="text-left not-italic">
-              <div className="flex justify-between >=345px:flex-col >=345px:items-center ml-1 text-white font-bold text-2xl">
+              <div
+                className={`${
+                  tagsBadge &&
+                  "flex justify-between >=345px:flex-col ml-1 text-white font-bold text-2xl 630px-768px:flex-col >=630px:flex-col"
+                }
+              `}
+              >
                 {note?.title}
-                <span className="font-bold uppercase">
+                <span
+                  className={`${
+                    tagsBadge &&
+                    "flex items-center >=768px:mt-3 font-bold uppercase >=630px:block"
+                  }`}
+                >
                   {note?.tags?.length > 0 &&
                     note?.tags.map((tag) => (
                       <span
-                        className="font-bold uppercase badge badge-outline"
+                        className="mx-[0.25rem] font-bold uppercase badge badge-outline"
                         key={tag?.id}
                       >
                         {tag?.label}

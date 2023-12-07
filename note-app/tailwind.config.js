@@ -14,6 +14,9 @@ export default {
         ">=345px": { "min": "9.375em", "max": "21.5625em" },
         ">=445px": { "min": "9.375em", "max": "27.8125em" },
         ">=465px": { "min": "9.375em", "max": "29.0625em" },
+        ">=768px": { "min": "9.375em", "max": "48em" },
+        ">=630px": { "min": "9.375em", "max": "39.375em" },
+        "630px-768px": { "min": "39.375em", "max": "48em" },
       },
       fontFamily: {
         'Ubuntu': ['Ubuntu', 'sans-serif'],
