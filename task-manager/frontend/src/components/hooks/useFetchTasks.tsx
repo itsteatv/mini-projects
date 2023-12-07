@@ -1,11 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
 import { FetchTasks } from "../api/FetchTasks";
+import { Task, UseFetchTasksResult } from "../types/Types";
 
-export async function useFetchTasks(): Promise<Task> {
-  const { isLoading, data: task } = useQuery({
+export function useFetchTasks(): UseFetchTasksResult {
+  const { isLoading, data: tasks } = useQuery<Task[]>({
     queryKey: ["task"],
     queryFn: FetchTasks,
   });
 
-  return { isLoading, task };
+  console.log(tasks);
+
+  return { isLoading, tasks };
 }
