@@ -8,6 +8,7 @@ function App() {
     defaultOptions: {
       queries: {
         staleTime: 0,
+        refetchOnReconnect: true,
       },
     },
   });
