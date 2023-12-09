@@ -6,6 +6,10 @@ export default async function DeleteTasks(task: Task): Promise<Task> {
     method: "DELETE",
   });
 
+  if (!response.ok) {
+    throw new Error("Failed to delete task");
+  }
+
   console.log(response);
 
   const data = response.json();

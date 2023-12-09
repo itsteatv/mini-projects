@@ -12,6 +12,10 @@ export const AddTask = async (task: Task): Promise<Task> => {
     body: JSON.stringify(task),
   });
 
+  if (!response.ok) {
+    throw new Error("Failed to add task");
+  }
+
   console.log(response);
 
   const data = response.json();
