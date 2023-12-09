@@ -1,8 +1,8 @@
 export interface Task {
-  _id: number | string;
+  _id?: number | string;
   title: string;
   desc: string;
-  completed: boolean;
+  completed: boolean | string;
 }
 
 export interface UseFetchTasksResult {
