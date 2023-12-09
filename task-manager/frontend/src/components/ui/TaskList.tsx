@@ -37,9 +37,12 @@ function TaskList() {
           </div>
         </div>
         {showAdditionalIcons ? (
-          <p className="text-black mt-4 text-center">
-            Hello, here are your latest tasks
-          </p>
+          <div className="flex items-center justify-between mt-4 ">
+            <p className="text-black text-center">
+              Hello, here are your latest tasks
+            </p>
+            <Dropdown showAdditionalIcons={showAdditionalIcons} />
+          </div>
         ) : (
           <div className="flex items-center justify-between mt-4 ">
             <p className="text-black text-left">Hello, add new task</p>
