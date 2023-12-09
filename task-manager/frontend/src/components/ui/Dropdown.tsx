@@ -1,9 +1,8 @@
-import { CgTrashEmpty, CgPen, CgAdd, CgMoreVerticalAlt } from "react-icons/cg";
-import { useState, useRef, useEffect } from "react";
+import { CgAdd, CgMoreVerticalAlt } from "react-icons/cg";
+import { useState, useEffect } from "react";
 import Modal from "./Modal";
 
-export default function Dropdown({ showAdditionalIcons }) {
-  console.log(showAdditionalIcons);
+export default function Dropdown() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
@@ -13,10 +12,6 @@ export default function Dropdown({ showAdditionalIcons }) {
       modalElement.showModal();
     }
   }, [isModalOpen]);
-
-  const openModal = () => {
-    setIsModalOpen(true);
-  };
 
   const closeModal = () => {
     setIsModalOpen(false);
@@ -32,25 +27,13 @@ export default function Dropdown({ showAdditionalIcons }) {
           tabIndex={0}
           className="dropdown-content z-[1] mt-[0.25rem] menu p-2 shadow bg-white rounded-box"
         >
-          {!showAdditionalIcons ? (
-            <div className="flex gap-2 text-black cursor-pointer">
-              <CgAdd
-                onClick={() => {
-                  setIsModalOpen(true);
-                }}
-              />
-            </div>
-          ) : (
-            <div className="flex gap-2 text-black cursor-pointer">
-              <CgTrashEmpty />
-              <CgAdd
-                onClick={() => {
-                  setIsModalOpen(true);
-                }}
-              />
-              <CgPen />
-            </div>
-          )}
+          <div className="flex gap-2 text-black cursor-pointer">
+            <CgAdd
+              onClick={() => {
+                setIsModalOpen(true);
+              }}
+            />
+          </div>
         </ul>
       </div>
 

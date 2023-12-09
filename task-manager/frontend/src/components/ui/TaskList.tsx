@@ -1,6 +1,7 @@
 import { useFetchTasks } from "../hooks/useFetchTasks";
 import { Spinner } from "./Spinner";
 import { CgCheckO, CgCloseO } from "react-icons/cg";
+import { CgTrashEmpty, CgPen } from "react-icons/cg";
 import Dropdown from "./Dropdown";
 
 function TaskList() {
@@ -41,21 +42,25 @@ function TaskList() {
             <p className="text-black text-center">
               Hello, here are your latest tasks
             </p>
-            <Dropdown showAdditionalIcons={showAdditionalIcons} />
+            <Dropdown />
           </div>
         ) : (
           <div className="flex items-center justify-between mt-4 ">
             <p className="text-black text-left">Hello, add new task</p>
-            <Dropdown showAdditionalIcons={showAdditionalIcons} />
+            <Dropdown />
           </div>
         )}
         {task?.map((task) => (
           <div id="tasks" className="my-5" key={task._id}>
             <div
               id="task"
-              className="flex items-center justify-between border-b border-l-4 border-slate-200 border-l-transparent bg-gradient-to-r from-transparent to-transparent px-2 py-3 transition duration-150 ease-linear hover:from-slate-100"
+              className="flex flex-row-reverse items-center justify-between border-b border-l-4 border-slate-200 border-l-transparent bg-gradient-to-r from-transparent to-transparent px-2 py-3 transition duration-150 ease-linear hover:from-slate-100"
             >
-              <div className="inline-flex items-center space-x-2">
+              <div className="flex gap-2">
+                <CgTrashEmpty className="cursor-pointer text-black" />
+                <CgPen className="cursor-pointer text-black" />
+              </div>
+              <div className="flex items-center justify-between space-x-2">
                 {task?.completed === false ? (
                   <div className="flex gap-2 text-red-600">
                     <CgCloseO />
