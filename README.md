@@ -24,7 +24,7 @@ These mini projects serve as a playground for experimenting with new technologie
 4. [Project 4: note app](https://github.com/itsteatv/mini-projects/tree/master/note-app)
 5. [Project 5: profile card component](https://github.com/itsteatv/mini-projects/tree/master/profile-card-component)
 6. [Project 6: quote generator](https://github.com/itsteatv/mini-projects/tree/master/quote-generator)
-7. [Project 4: task manager](https://github.com/itsteatv/mini-projects/tree/master/task-manager)
+7. [Project 7: task manager](https://github.com/itsteatv/mini-projects/tree/master/task-manager)
 
 ## How to Run
 
