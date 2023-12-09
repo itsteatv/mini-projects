@@ -1,5 +1,5 @@
 export interface Task {
-  _id: number;
+  _id: number | string;
   title: string;
   desc: string;
   completed: boolean;
@@ -7,5 +7,5 @@ export interface Task {
 
 export interface UseFetchTasksResult {
   isLoading: boolean;
-  tasks: Task[] | undefined;
+  task: Task[] | undefined;
 }
