@@ -10,6 +10,8 @@ function TaskList() {
     return <Spinner />;
   }
 
+  const showAdditionalIcons = task?.length > 0;
+
   return (
     <div className="flex items-center min-h-screen font-Ubuntu">
       <div className="mx-auto my-10 max-w-lg rounded-xl bg-white p-8 shadow shadow-slate-300">
@@ -34,9 +36,16 @@ function TaskList() {
             </label>
           </div>
         </div>
-        <p className="text-black mt-4 text-center">
-          Hello, here are your latest tasks
-        </p>
+        {showAdditionalIcons ? (
+          <p className="text-black mt-4 text-center">
+            Hello, here are your latest tasks
+          </p>
+        ) : (
+          <div className="flex items-center justify-between mt-4 ">
+            <p className="text-black text-left">Hello, add new task</p>
+            <Dropdown showAdditionalIcons={showAdditionalIcons} />
+          </div>
+        )}
         {task?.map((task) => (
           <div id="tasks" className="my-5" key={task._id}>
             <div
@@ -54,9 +63,6 @@ function TaskList() {
                   </div>
                 )}
                 <div className="text-black">{task.title}</div>
-              </div>
-              <div>
-                <Dropdown />
               </div>
             </div>
           </div>
