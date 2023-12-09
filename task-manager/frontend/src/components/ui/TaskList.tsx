@@ -3,9 +3,11 @@ import { Spinner } from "./Spinner";
 import { CgCheckO, CgCloseO } from "react-icons/cg";
 import { CgTrashEmpty, CgPen } from "react-icons/cg";
 import Dropdown from "./Dropdown";
+import useDeleteTasks from "../hooks/useDeleteTasks";
 
 function TaskList() {
   const { isLoading, task } = useFetchTasks();
+  const { deleteTask } = useDeleteTasks();
 
   if (isLoading) {
     return <Spinner />;
@@ -57,7 +59,10 @@ function TaskList() {
               className="flex flex-row-reverse items-center justify-between border-b border-l-4 border-slate-200 border-l-transparent bg-gradient-to-r from-transparent to-transparent px-2 py-3 transition duration-150 ease-linear hover:from-slate-100"
             >
               <div className="flex gap-2">
-                <CgTrashEmpty className="cursor-pointer text-black" />
+                <CgTrashEmpty
+                  onClick={() => deleteTask(task)}
+                  className="cursor-pointer text-black"
+                />
                 <CgPen className="cursor-pointer text-black" />
               </div>
               <div className="flex items-center justify-between space-x-2">
