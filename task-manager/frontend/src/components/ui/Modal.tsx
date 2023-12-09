@@ -1,26 +1,29 @@
-import { Task } from "../types/Types";
-import { useState } from "react";
-import { v4 as uuidV4 } from "uuid";
+import { FormEvent, useState } from "react";
+import useAddTasks from "../hooks/useAddTasks";
+
 interface ModalProps {
-  closeModal: () => void;
-  addTask: (newTask: Task) => void;
+  closeModal?: () => void;
 }
 
-export default function Modal({ closeModal, addTask }: ModalProps) {
-  const [title, setTitle] = useState<string>("");
-  const [desc, setDesc] = useState<string>("");
-  const [completed, setCompleted] = useState<boolean>(false);
+export default function Modal({ closeModal }: ModalProps) {
+  const [title, setTitle] = useState("");
+  console.log(title);
+  const [desc, setDesc] = useState("");
+  const [completed, setCompleted] = useState(false);
+  const { addTask } = useAddTasks();
 
-  const handleAddTask = () => {
-    const newTask: Task = {
-      _id: uuidV4(),
-      title,
-      desc,
-      completed,
+  const handleAddTask = function (event: FormEvent) {
+    event.preventDefault();
+
+    const newTask = {
+      title: title,
+      desc: desc,
+      completed: completed,
     };
 
     addTask(newTask);
-    closeModal();
+
+    closeModal?.();
   };
 
   return (
@@ -35,12 +38,11 @@ export default function Modal({ closeModal, addTask }: ModalProps) {
               ✕
             </button>
           </form>
-          <form className="flex flex-col items-center">
+          <form className="flex flex-col items-center" onSubmit={handleAddTask}>
             <h2 className="text-left font-bold font-Ubuntu">Add Task</h2>
             <div className="mt-4">
               <input
                 type="text"
-                value={title}
                 placeholder="Type title here"
                 className="input input-bordered w-full max-w-xs"
                 onChange={(e) => setTitle(e.target.value)}
@@ -49,7 +51,6 @@ export default function Modal({ closeModal, addTask }: ModalProps) {
             <div className="mt-4">
               <input
                 type="text"
-                value={desc}
                 placeholder="Type description here"
                 className="input input-bordered w-full max-w-xs"
                 onChange={(e) => setDesc(e.target.value)}
@@ -59,15 +60,14 @@ export default function Modal({ closeModal, addTask }: ModalProps) {
               <label className="label cursor-pointer">
                 <span className="label-text">Completed ?</span>
                 <input
-                  checked={completed}
-                  onChange={(e) => setCompleted(e.target.checked)}
                   type="checkbox"
                   className="checkbox ml-4"
+                  onChange={(e) => setCompleted(e.target.checked)}
                 />
               </label>
             </div>
             <div className="flex gap-4 mt-4">
-              <button className="btn btn-success" onClick={handleAddTask}>
+              <button type="submit" className="btn btn-success">
                 Add Task
               </button>
               <button className="btn btn-warning" onClick={closeModal}>
