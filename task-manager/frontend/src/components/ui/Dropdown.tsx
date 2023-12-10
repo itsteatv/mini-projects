@@ -1,6 +1,6 @@
 import { CgAdd, CgMoreVerticalAlt } from "react-icons/cg";
 import { useState, useEffect } from "react";
-import Modal from "./Modal";
+import Modal from "./AddTasksModal";
 
 export default function Dropdown() {
   const [isModalOpen, setIsModalOpen] = useState(false);

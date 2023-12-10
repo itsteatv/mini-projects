@@ -7,9 +7,9 @@ interface ModalProps {
 
 export default function Modal({ closeModal }: ModalProps) {
   const [title, setTitle] = useState("");
-  console.log(title);
   const [desc, setDesc] = useState("");
   const [completed, setCompleted] = useState(false);
+
   const { addTask } = useAddTasks();
 
   const handleAddTask = function (event: FormEvent) {
