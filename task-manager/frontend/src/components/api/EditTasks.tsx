@@ -6,7 +6,7 @@ export default async function EditTasks(task: Task): Promise<Task> {
     headers: {
       "Content-Type": "application/json",
     },
-    method: "PUT",
+    method: "PATCH",
     body: JSON.stringify(task),
   });
 

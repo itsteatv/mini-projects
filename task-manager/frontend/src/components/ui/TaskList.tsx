@@ -2,12 +2,28 @@ import { useFetchTasks } from "../hooks/useFetchTasks";
 import { Spinner } from "./Spinner";
 import { CgCheckO, CgCloseO } from "react-icons/cg";
 import { CgTrashEmpty, CgPen } from "react-icons/cg";
+import { useState, useEffect } from "react";
 import Dropdown from "./Dropdown";
 import useDeleteTasks from "../hooks/useDeleteTasks";
+import EditTasksModal from "./EditTasksModal";
 
 function TaskList() {
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+
   const { isLoading, task } = useFetchTasks();
   const { deleteTask } = useDeleteTasks();
+
+  useEffect(() => {
+    const modalElement = document.getElementById("my_modal_4");
+
+    if (isEditModalOpen && modalElement) {
+      modalElement.showModal();
+    }
+  }, [isEditModalOpen]);
+
+  const closeModal = () => {
+    setIsEditModalOpen(false);
+  };
 
   if (isLoading) {
     return <Spinner />;
@@ -39,19 +55,14 @@ function TaskList() {
             </label>
           </div>
         </div>
-        {showAdditionalIcons ? (
-          <div className="flex items-center justify-between mt-4 ">
-            <p className="text-black text-center">
-              Hello, here are your latest tasks
-            </p>
-            <Dropdown />
-          </div>
-        ) : (
-          <div className="flex items-center justify-between mt-4 ">
-            <p className="text-black text-left">Hello, add new task</p>
-            <Dropdown />
-          </div>
-        )}
+        <div className="flex items-center justify-between mt-4 ">
+          <p className="text-black text-center">
+            {showAdditionalIcons
+              ? "Hello, here are your latest tasks"
+              : "Hello, add new task"}
+          </p>
+          <Dropdown />
+        </div>
         {task?.map((task) => (
           <div id="tasks" className="my-5" key={task._id}>
             <div
@@ -63,7 +74,15 @@ function TaskList() {
                   onClick={() => deleteTask(task)}
                   className="cursor-pointer text-black"
                 />
-                <CgPen className="cursor-pointer text-black" />
+                <CgPen
+                  onClick={() => {
+                    setIsEditModalOpen(true);
+                  }}
+                  className="cursor-pointer text-black"
+                />
+                {isEditModalOpen && (
+                  <EditTasksModal task={task} closeModal={closeModal} />
+                )}
               </div>
               <div className="flex items-center justify-between space-x-2">
                 {task?.completed === false ? (
