@@ -32,7 +32,7 @@ function TaskList() {
   const showAdditionalIcons = task?.length > 0;
 
   return (
-    <div className="flex items-center min-h-screen font-Ubuntu">
+    <div className="flex items-center min-h-screen font-Kanit">
       <div className="mx-auto my-10 max-w-lg rounded-xl bg-white p-8 shadow shadow-slate-300">
         <div className="flex flex-row items-center gap-10">
           <div>
@@ -94,7 +94,10 @@ function TaskList() {
                     <CgCheckO />
                   </div>
                 )}
-                <div className="text-black">{task.title}</div>
+                <div>
+                  <div className="text-black">{task.title}</div>
+                  <p className="ml-1 text-[0.75rem] italic">{task.desc}</p>
+                </div>
               </div>
             </div>
           </div>
