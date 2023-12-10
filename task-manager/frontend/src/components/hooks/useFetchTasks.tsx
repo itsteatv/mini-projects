@@ -8,7 +8,5 @@ export function useFetchTasks(): UseFetchTasksResult {
     queryFn: FetchTasks,
   });
 
-  console.log(task);
-
   return { isLoading, task };
 }

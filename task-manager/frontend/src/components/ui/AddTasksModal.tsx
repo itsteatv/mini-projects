@@ -1,11 +1,11 @@
 import { FormEvent, useState } from "react";
 import useAddTasks from "../hooks/useAddTasks";
 
-interface ModalProps {
+interface AddTasksModalProps {
   closeModal?: () => void;
 }
 
-export default function Modal({ closeModal }: ModalProps) {
+export default function AddTasksModal({ closeModal }: AddTasksModalProps) {
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
   const [completed, setCompleted] = useState(false);
