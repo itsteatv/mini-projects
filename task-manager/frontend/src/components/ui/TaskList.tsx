@@ -6,9 +6,11 @@ import { useState, useEffect } from "react";
 import Dropdown from "./Dropdown";
 import useDeleteTasks from "../hooks/useDeleteTasks";
 import EditTasksModal from "./EditTasksModal";
+import { Task } from "../types/Types";
 
 function TaskList() {
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [editingTask, setEditingTask] = useState<Task | null>(null);
 
   const { isLoading, task } = useFetchTasks();
   const { deleteTask } = useDeleteTasks();
@@ -77,11 +79,12 @@ function TaskList() {
                 <CgPen
                   onClick={() => {
                     setIsEditModalOpen(true);
+                    setEditingTask(task);
                   }}
                   className="cursor-pointer text-black"
                 />
-                {isEditModalOpen && (
-                  <EditTasksModal task={task} closeModal={closeModal} />
+                {isEditModalOpen && editingTask && (
+                  <EditTasksModal task={editingTask} closeModal={closeModal} />
                 )}
               </div>
               <div className="flex items-center justify-between space-x-2">
