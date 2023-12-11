@@ -41,19 +41,19 @@ function TaskList() {
 
   return (
     <div className="flex items-center min-h-screen font-Kanit >=445px:mx-4">
-      <div className="mx-auto my-10 rounded-xl bg-white p-8 shadow shadow-slate-300 ">
+      <div className="mx-auto my-10 rounded-xl w-4/5 bg-white p-8 shadow shadow-slate-300">
         <div className="flex flex-row >=445px:flex-col items-center gap-10 >=445px:gap-0">
           <div>
             <h1 className="text-black text-3xl font-medium">Tasks list</h1>
           </div>
           <div className="relative">
-            <input
+            {/* <input
               id="id-01"
               type="text"
               name="id-01"
               placeholder="Search for task"
               className="input input-bordered w-full max-w-xs bg-white mt-4"
-            />
+            /> */}
           </div>
         </div>
         <div className="flex items-center justify-between mt-4 >=445px:gap-4">
