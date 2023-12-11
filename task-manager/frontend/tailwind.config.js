@@ -9,6 +9,9 @@ export default {
       fontFamily: {
         'Kanit': ['Kanit', 'sans-serif'],
       },
+      screens: {
+        ">=445px": { "min": "9.375em", "max": "27.8125em" },
+      },
     },
   },
   daisyui: {

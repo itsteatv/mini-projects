@@ -35,9 +35,9 @@ function TaskList() {
   const showAdditionalIcons = task?.length > 0;
 
   return (
-    <div className="flex items-center min-h-screen font-Kanit">
-      <div className="mx-auto my-10 max-w-lg rounded-xl bg-white p-8 shadow shadow-slate-300">
-        <div className="flex flex-row items-center gap-10">
+    <div className="flex items-center min-h-screen font-Kanit >=445px:mx-4">
+      <div className="mx-auto my-10 rounded-xl bg-white p-8 shadow shadow-slate-300 ">
+        <div className="flex flex-row >=445px:flex-col items-center gap-10 >=445px:gap-0">
           <div>
             <h1 className="text-black text-3xl font-medium">Tasks list</h1>
           </div>
@@ -46,19 +46,12 @@ function TaskList() {
               id="id-01"
               type="text"
               name="id-01"
-              placeholder="your name"
-              className="peer relative h-10 w-full rounded border bg-white border-slate-200 px-4 text-sm text-slate-500 placeholder-transparent outline-none transition-all autofill:bg-white invalid:border-pink-500 invalid:text-pink-500 focus:border-slate-200 focus:outline-none invalid:focus:border-pink-500 focus-visible:outline-none disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-slate-400"
+              placeholder="Search for task"
+              className="input input-bordered w-full max-w-xs bg-white mt-4"
             />
-            <label
-              htmlFor="id-01"
-              className="absolute -top-2 left-2 z-[1] cursor-text px-2 text-xs transition-all before:absolute before:left-0 before:top-0 before:z-[-1] before:block before:h-full before:w-full text-black before:transition-all peer-placeholder-shown:top-2.5 peer-placeholder-shown:text-sm peer-autofill:-top-2 peer-required:after:text-pink-500 peer-required:after:content-['\00a0*'] peer-invalid:text-pink-500 peer-focus:-top-2 peer-focus:cursor-default peer-focus:text-xs peer-focus:text-black peer-invalid:peer-focus:text-pink-500 peer-disabled:cursor-not-allowed peer-disabled:text-slate-400 peer-disabled:before:bg-transparent"
-            >
-              {" "}
-              Search for task{" "}
-            </label>
           </div>
         </div>
-        <div className="flex items-center justify-between mt-4 ">
+        <div className="flex items-center justify-between mt-4 >=445px:gap-4">
           <p className="text-black text-center">
             {showAdditionalIcons
               ? "Hello, here are your latest tasks"
