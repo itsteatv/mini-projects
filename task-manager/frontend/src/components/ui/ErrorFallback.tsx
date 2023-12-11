@@ -20,8 +20,8 @@ export default function ErrorFallback({
         </p>
 
         <div
-          onClick={resetErrorBoundary}
-          className="mt-6 inline-block rounded bg-indigo-600 px-5 py-3 text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring"
+          onClick={() => window.location.reload()}
+          className="mt-6 inline-block rounded cursor-pointer bg-indigo-600 px-5 py-3 text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring"
         >
           Try Again
         </div>
