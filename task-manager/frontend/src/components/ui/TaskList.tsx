@@ -3,10 +3,11 @@ import { Spinner } from "./Spinner";
 import { CgCheckO, CgCloseO } from "react-icons/cg";
 import { CgTrashEmpty, CgPen } from "react-icons/cg";
 import { useState, useEffect } from "react";
+import { Task } from "../types/Types";
 import Dropdown from "./Dropdown";
 import useDeleteTasks from "../hooks/useDeleteTasks";
 import EditTasksModal from "./EditTasksModal";
-import { Task } from "../types/Types";
+import ReactMarkdown from "react-markdown";
 
 function TaskList() {
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
@@ -99,7 +100,9 @@ function TaskList() {
                 )}
                 <div>
                   <div className="text-black">{task.title}</div>
-                  <p className="ml-1 text-[0.75rem] italic">{task.desc}</p>
+                  <ReactMarkdown className={"ml-1 text-[0.75rem] italic"}>
+                    {task.desc}
+                  </ReactMarkdown>
                 </div>
               </div>
             </div>
