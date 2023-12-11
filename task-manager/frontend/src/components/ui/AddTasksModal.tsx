@@ -9,6 +9,7 @@ export default function AddTasksModal({ closeModal }: AddTasksModalProps) {
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
   const [completed, setCompleted] = useState(false);
+  const [isTitleValid, setIsTitleValid] = useState(false);
 
   const { addTask } = useAddTasks();
 
@@ -24,6 +25,11 @@ export default function AddTasksModal({ closeModal }: AddTasksModalProps) {
     addTask(newTask);
 
     closeModal?.();
+  };
+
+  const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setTitle(e.target.value);
+    setIsTitleValid(e.target.value.trim() !== "");
   };
 
   return (
@@ -45,7 +51,7 @@ export default function AddTasksModal({ closeModal }: AddTasksModalProps) {
                 type="text"
                 placeholder="Type title here"
                 className="input input-bordered w-full max-w-xs"
-                onChange={(e) => setTitle(e.target.value)}
+                onChange={handleTitleChange}
               />
             </div>
             <div className="mt-4">
@@ -67,7 +73,11 @@ export default function AddTasksModal({ closeModal }: AddTasksModalProps) {
               </label>
             </div>
             <div className="flex gap-4 mt-4">
-              <button type="submit" className="btn btn-success">
+              <button
+                type="submit"
+                className="btn btn-success"
+                disabled={!isTitleValid}
+              >
                 Add Task
               </button>
               <button className="btn btn-warning" onClick={closeModal}>
