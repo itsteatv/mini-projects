@@ -41,7 +41,7 @@ function TaskList() {
 
   return (
     <div className="flex items-center min-h-screen font-Kanit >=445px:mx-4">
-      <div className="mx-auto my-10 rounded-xl w-4/5 bg-white p-8 shadow shadow-slate-300">
+      <div className="mx-auto my-10 rounded-xl w-full max-w-[46rem] >=768px:max-w-[35rem] >=600px:max-w-[27rem] bg-white p-8 shadow shadow-slate-300">
         <div className="flex flex-row >=445px:flex-col items-center gap-10 >=445px:gap-0">
           <div>
             <h1 className="text-black text-3xl font-medium">Tasks list</h1>
