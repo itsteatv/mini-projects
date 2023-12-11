@@ -19,12 +19,15 @@ export default function EditTasksModal({
     task?.completed || false
   );
 
+  const [isFormChanged, setIsFormChanged] = useState(false);
+
   const { editTask } = useEditTasks();
 
   useEffect(() => {
     setTitle(task?.title || "");
     setDesc(task?.desc || "");
     setCompleted(task?.completed || false);
+    setIsFormChanged(false);
   }, [task]);
 
   const handleEditTask = function (event: FormEvent) {
@@ -44,6 +47,10 @@ export default function EditTasksModal({
     editTask(editedTask);
 
     closeModal?.();
+  };
+
+  const handleInputChange = () => {
+    setIsFormChanged(true);
   };
 
   return (
@@ -69,7 +76,11 @@ export default function EditTasksModal({
                 placeholder="Type title here"
                 className="input input-bordered w-full max-w-xs"
                 value={title}
-                onChange={(e) => setTitle(e.target.value)}
+                onChange={(e) => {
+                  setTitle(e.target.value);
+                  handleInputChange();
+                }}
+                required
               />
             </div>
             <div className="mt-4">
@@ -78,7 +89,10 @@ export default function EditTasksModal({
                 placeholder="Type description here"
                 className="input input-bordered w-full max-w-xs"
                 value={desc}
-                onChange={(e) => setDesc(e.target.value)}
+                onChange={(e) => {
+                  setDesc(e.target.value);
+                  handleInputChange();
+                }}
               />
             </div>
             <div className="form-control mt-4">
@@ -88,12 +102,19 @@ export default function EditTasksModal({
                   type="checkbox"
                   className="checkbox ml-4"
                   checked={completed}
-                  onChange={(e) => setCompleted(e.target.checked)}
+                  onChange={(e) => {
+                    setCompleted(e.target.checked);
+                    handleInputChange();
+                  }}
                 />
               </label>
             </div>
             <div className="flex gap-4 mt-4">
-              <button type="submit" className="btn btn-success">
+              <button
+                type="submit"
+                className="btn btn-success"
+                disabled={!isFormChanged || !title.trim()}
+              >
                 Edit Task
               </button>
               <button className="btn btn-warning" onClick={closeModal}>
