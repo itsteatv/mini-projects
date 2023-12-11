@@ -8,6 +8,7 @@ import Dropdown from "./Dropdown";
 import useDeleteTasks from "../hooks/useDeleteTasks";
 import EditTasksModal from "./EditTasksModal";
 import ReactMarkdown from "react-markdown";
+import ErrorFallback from "./ErrorFallback";
 
 function TaskList() {
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
@@ -30,6 +31,10 @@ function TaskList() {
 
   if (isLoading) {
     return <Spinner />;
+  }
+
+  if (!task?.length) {
+    return <ErrorFallback />;
   }
 
   const showAdditionalIcons = task?.length > 0;
