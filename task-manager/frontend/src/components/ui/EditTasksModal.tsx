@@ -70,30 +70,33 @@ export default function EditTasksModal({
             onSubmit={handleEditTask}
           >
             <h2 className="text-left font-bold font-Ubuntu">Edit Task</h2>
-            <div className="mt-4">
-              <input
-                type="text"
-                placeholder="Type title here"
-                className="input input-bordered w-full max-w-xs"
-                value={title}
-                onChange={(e) => {
-                  setTitle(e.target.value);
-                  handleInputChange();
-                }}
-                required
-              />
-            </div>
-            <div className="mt-4">
-              <input
-                type="text"
-                placeholder="Type description here"
-                className="input input-bordered w-full max-w-xs"
-                value={desc}
-                onChange={(e) => {
-                  setDesc(e.target.value);
-                  handleInputChange();
-                }}
-              />
+            <div className="max-w-full">
+              <div className="mt-4">
+                <input
+                  type="text"
+                  placeholder="Type title here"
+                  className="input input-bordered w-full max-w-xs"
+                  value={title}
+                  onChange={(e) => {
+                    setTitle(e.target.value);
+                    handleInputChange();
+                  }}
+                  required
+                />
+              </div>
+              <div className="mt-4">
+                <textarea
+                  rows={4}
+                  type="text"
+                  placeholder="Type description here"
+                  className="textarea textarea-bordered w-full max-w-xs resize-none"
+                  value={desc}
+                  onChange={(e) => {
+                    setDesc(e.target.value);
+                    handleInputChange();
+                  }}
+                />
+              </div>
             </div>
             <div className="form-control mt-4">
               <label className="label cursor-pointer">
