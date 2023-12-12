@@ -3,10 +3,14 @@ import { FetchTasks } from "../api/FetchTasks";
 import { Task, UseFetchTasksResult } from "../types/Types";
 
 export function useFetchTasks(): UseFetchTasksResult {
-  const { isLoading, data: task } = useQuery<Task[]>({
+  const {
+    isError,
+    isLoading,
+    data: task,
+  } = useQuery<Task[]>({
     queryKey: ["task"],
     queryFn: FetchTasks,
   });
 
-  return { isLoading, task };
+  return { isError, isLoading, task };
 }
