@@ -5,17 +5,19 @@ import { CgTrashEmpty, CgPen } from "react-icons/cg";
 import { useState, useEffect } from "react";
 import { Task } from "../types/Types";
 import Dropdown from "./Dropdown";
-import useDeleteTasks from "../hooks/useDeleteTasks";
 import EditTasksModal from "./EditTasksModal";
 import ReactMarkdown from "react-markdown";
+import DeleteTaskNotification from "./DeleteTaskNotification";
+import skull from "../../assets/skull.gif";
 import ErrorFallback from "./ErrorFallback";
 
 function TaskList() {
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [editingTask, setEditingTask] = useState<Task | null>(null);
+  const [showDeleteNotification, setShowDeleteNotification] = useState(false);
+  const [selectedTask, setSelectedTask] = useState<Task | null>(null);
 
-  const { isLoading, task } = useFetchTasks();
-  const { deleteTask } = useDeleteTasks();
+  const { isError, isLoading, task } = useFetchTasks();
 
   useEffect(() => {
     const modalElement = document.getElementById("my_modal_4");
@@ -33,7 +35,7 @@ function TaskList() {
     return <Spinner />;
   }
 
-  if (!task?.length) {
+  if (isError) {
     return <ErrorFallback />;
   }
 
@@ -46,24 +48,32 @@ function TaskList() {
           <div>
             <h1 className="text-black text-3xl font-medium">Tasks list</h1>
           </div>
-          <div className="relative">
-            {/* <input
-              id="id-01"
-              type="text"
-              name="id-01"
-              placeholder="Search for task"
-              className="input input-bordered w-full max-w-xs bg-white mt-4"
-            /> */}
-          </div>
         </div>
         <div className="flex items-center justify-between mt-4 >=445px:gap-4">
           <p className="text-black text-center">
-            {showAdditionalIcons
-              ? "Hello, here are your latest tasks"
-              : "Hello, add new task"}
+            {showAdditionalIcons ? (
+              "Hello, here are your latest tasks"
+            ) : (
+              <div className="flex items-center gap-1">
+                No task found, add new task
+                <img
+                  className="w-10"
+                  src={skull}
+                  alt="no task to show message"
+                />
+              </div>
+            )}
           </p>
           <Dropdown />
         </div>
+        {showDeleteNotification && (
+          <div className="my-4">
+            <DeleteTaskNotification
+              task={selectedTask}
+              onCancel={() => setShowDeleteNotification(false)}
+            />
+          </div>
+        )}
         {task?.map((task) => (
           <div id="tasks" className="my-5" key={task._id}>
             <div
@@ -72,7 +82,10 @@ function TaskList() {
             >
               <div className="flex gap-2">
                 <CgTrashEmpty
-                  onClick={() => deleteTask(task)}
+                  onClick={() => {
+                    setShowDeleteNotification(true);
+                    setSelectedTask(task);
+                  }}
                   className="cursor-pointer text-black"
                 />
                 <CgPen

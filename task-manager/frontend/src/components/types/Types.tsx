@@ -7,5 +7,6 @@ export interface Task {
 
 export interface UseFetchTasksResult {
   isLoading: boolean;
+  isError: boolean;
   task: Task[] | undefined;
 }
