@@ -20,8 +20,8 @@ These mini projects serve as a playground for experimenting with new technologie
 
 1. [Project 1: 3 column preview card component](https://github.com/itsteatv/mini-projects/tree/master/3-column%20preview%20card%20component)
 2. [Project 2: advice app](https://github.com/itsteatv/mini-projects/tree/master/advice-app)
-3. [Project 3: my country](https://github.com/itsteatv/mini-projects/tree/master/my-country)
-4. [Project 4: jwt authentication](https://github.com/itsteatv/mini-projects/tree/master/jwt-authentication)
+3. [Project 3: jwt authentication](https://github.com/itsteatv/mini-projects/tree/master/jwt-authentication)
+4. [Project 4: my country](https://github.com/itsteatv/mini-projects/tree/master/my-country)
 5. [Project 5: note app](https://github.com/itsteatv/mini-projects/tree/master/note-app)
 6. [Project 6: profile card component](https://github.com/itsteatv/mini-projects/tree/master/profile-card-component)
 7. [Project 7: quote generator](https://github.com/itsteatv/mini-projects/tree/master/quote-generator)
