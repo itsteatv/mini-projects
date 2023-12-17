@@ -1,6 +1,7 @@
 import { url } from "../utils/url";
+import { RegisterData } from "../utils/types";
 
-export const RegisterAPI = async ({ email, password }) => {
+export const RegisterAPI = async ({ email, password }: RegisterData) => {
   const response = await fetch(`${url}/signup`, {
     method: "POST",
     headers: {

@@ -1,19 +1,19 @@
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 import { RegisterAPI } from "../api/RegisterAPI";
 import toast from "react-hot-toast";
+import { RegisterData } from "../utils/types";
 
 export function useRegister() {
   const { isPending, mutate } = useMutation({
-    mutationFn: ({ email, password }) => RegisterAPI({ email, password }),
+    mutationFn: ({ email, password }: RegisterData) =>
+      RegisterAPI({ email, password }),
 
-    onSuccess: (data) => {
-      toast.success("Success! Your account has been registered."),
-        console.log(data);
+    onSuccess: () => {
+      toast.success("Success! Your account has been registered.");
     },
 
-    onError: (data) => {
+    onError: () => {
       toast.error("Registration failed.");
-      console.log(data);
     },
   });
 
