@@ -24,7 +24,12 @@ function RegisterForm() {
   };
 
   const validateForm = (newEmail: string, newPassword: string) => {
-    setIsFormValid(newEmail.trim() !== "" && newPassword.trim() !== "");
+    const isEmailValid = /^(.+)@(gmail\.com|outlook\.com|yahoo\.com)$/.test(
+      newEmail
+    );
+    const isPasswordValid = newPassword.length >= 6;
+
+    setIsFormValid(isEmailValid && isPasswordValid);
   };
 
   const handleRegisterSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -39,8 +44,17 @@ function RegisterForm() {
     }
   };
 
-  const handleFormIsValid = () => {
-    setIsFormValid(true);
+  const getMessage = () => {
+    if (!email.trim()) {
+      return "";
+    }
+
+    const domain = email.split("@")[1];
+    if (/(gmail\.com|outlook\.com|yahoo\.com)$/.test(domain)) {
+      return `Valid domain: ${domain}`;
+    } else {
+      return "Invalid domain. Use gmail.com, outlook.com, or yahoo.com.";
+    }
   };
 
   return (
@@ -57,6 +71,7 @@ function RegisterForm() {
           value={email}
           onChange={handleEmailChange}
         />
+        {email && <div className="domain-message">{getMessage()}</div>}
         <input
           type="password"
           placeholder="Your password here"
