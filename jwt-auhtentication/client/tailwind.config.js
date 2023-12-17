@@ -5,7 +5,11 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        'IBM': ['IBM Plex Sans', 'sans-serif'],
+      },
+    },
   },
   daisyui: {
     themes: ["synthwave"],
