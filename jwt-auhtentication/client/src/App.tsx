@@ -18,7 +18,7 @@ function App() {
       <ReactQueryDevtools initialIsOpen={false} />
       <BrowserRouter>
         <Routes>
-          <Route index element={<Navigate replace to="login" />} />
+          <Route index element={<Navigate replace to="register" />} />
           <Route path="login" element={<LoginForm />} />
           <Route path="register" element={<RegisterForm />} />
           <Route path="*" element={<PageNotFound />} />
