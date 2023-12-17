@@ -4,6 +4,7 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import LoginForm from "./components/ui/Login";
 import RegisterForm from "./components/ui/Register";
 import PageNotFound from "./components/ui/PageNotFound";
+import { Toaster } from "react-hot-toast";
 function App() {
   const queryClient = new QueryClient({
     defaultOptions: {
@@ -24,6 +25,7 @@ function App() {
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </BrowserRouter>
+      <Toaster />
     </QueryClientProvider>
   );
 }
