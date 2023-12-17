@@ -44,7 +44,7 @@ function RegisterForm() {
     }
   };
 
-  const getMessage = () => {
+  const getEmailMessage = () => {
     if (!email.trim()) {
       return "";
     }
@@ -55,6 +55,16 @@ function RegisterForm() {
     } else {
       return "Invalid domain. Use gmail.com, outlook.com, or yahoo.com.";
     }
+  };
+
+  const getPasswordMessage = () => {
+    if (!password.trim()) {
+      return "";
+    }
+
+    return password.length >= 6
+      ? "Valid password: 6 characters or more"
+      : "Invalid password. Use 6 characters or more.";
   };
 
   return (
@@ -71,7 +81,7 @@ function RegisterForm() {
           value={email}
           onChange={handleEmailChange}
         />
-        {email && <div className="domain-message">{getMessage()}</div>}
+        {email && <div className="domain-message">{getEmailMessage()}</div>}
         <input
           type="password"
           placeholder="Your password here"
@@ -79,6 +89,9 @@ function RegisterForm() {
           value={password}
           onChange={handlePasswordChange}
         />
+        {password && (
+          <div className="password-message">{getPasswordMessage()}</div>
+        )}
         <div className="font-IBM flex gap-1">
           Already have an account ?
           <div
