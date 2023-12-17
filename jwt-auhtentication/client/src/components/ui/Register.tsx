@@ -6,24 +6,41 @@ import Spinner from "./Spinner";
 function RegisterForm() {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const [isFormValid, setIsFormValid] = useState<boolean>(false);
 
   const { isPending, mutate } = useRegister();
   const navigate = useNavigate();
 
-  console.log(email, password);
-
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setEmail(e.target.value);
+    const newEmail = e.target.value;
+    setEmail(newEmail);
+    validateForm(newEmail, password);
   };
 
   const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setPassword(e.target.value);
+    const newPassword = e.target.value;
+    setPassword(newPassword);
+    validateForm(email, newPassword);
+  };
+
+  const validateForm = (newEmail: string, newPassword: string) => {
+    setIsFormValid(newEmail.trim() !== "" && newPassword.trim() !== "");
   };
 
   const handleRegisterSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event?.preventDefault();
 
-    mutate({ email, password });
+    if (isFormValid) {
+      mutate({ email, password });
+
+      setEmail("");
+      setPassword("");
+      setIsFormValid(false);
+    }
+  };
+
+  const handleFormIsValid = () => {
+    setIsFormValid(true);
   };
 
   return (
@@ -59,13 +76,14 @@ function RegisterForm() {
         <button
           type="submit"
           className="inline-flex items-center justify-center h-10 gap-2 px-5 text-sm font-medium tracking-wide text-white transition duration-300 rounded-full whitespace-nowrap bg-violet-500 hover:bg-violet-600 focus:bg-violet-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-violet-300 disabled:bg-violet-300 disabled:shadow-none"
+          disabled={!isFormValid}
         >
           {isPending ? (
-            <span>
+            <>
               Registering <Spinner />
-            </span>
+            </>
           ) : (
-            <span>Register</span>
+            "Register"
           )}
         </button>
       </form>
