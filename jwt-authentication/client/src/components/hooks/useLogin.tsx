@@ -1,26 +1,29 @@
 import toast from "react-hot-toast";
 import { useMutation } from "@tanstack/react-query";
-import { RegisterAPI } from "../api/RegisterAPI";
-import { RegisterData } from "../utils/types";
-import { useNavigate } from "react-router-dom";
+import { FormsData } from "../utils/types";
+// import { useNavigate } from "react-router-dom";
+import { LoginAPI } from "../api/LoginAPI";
 
 export function useLogin() {
   //   const navigate = useNavigate();
 
-  const { isPending, mutate } = useMutation({
-    mutationFn: ({ email, password }: RegisterData) =>
-      RegisterAPI({ email, password }),
+  const { isPending, mutate: login } = useMutation({
+    mutationFn: ({ email, password }: FormsData) =>
+      LoginAPI({ email, password }),
 
-    onSuccess: () => {
+    onSuccess: (data) => {
       toast.success("Success! You are logged in.");
+
+      console.log(data);
 
       //   navigate("/welcome");
     },
 
-    onError: () => {
-      toast.error("login failed.");
+    onError: (data) => {
+      console.log(data);
+      toast.error(data.message);
     },
   });
 
-  return { isPending, mutate };
+  return { isPending, login };
 }
