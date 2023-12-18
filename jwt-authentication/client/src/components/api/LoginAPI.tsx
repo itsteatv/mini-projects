@@ -1,7 +1,11 @@
 import { url } from "../utils/url";
-import { RegisterData } from "../utils/types";
+import { FormsData } from "../utils/types";
 
-export const LoginAPI = async ({ email, password }: RegisterData) => {
+export const LoginAPI = async ({
+  email,
+  password,
+}: FormsData): Promise<FormsData> => {
+  console.log({ email, password });
   const response = await fetch(`${url}/login`, {
     method: "POST",
     headers: {
@@ -10,11 +14,21 @@ export const LoginAPI = async ({ email, password }: RegisterData) => {
     body: JSON.stringify({ email, password }),
   });
 
+  const data = await response.json();
+  console.log(data);
+  console.log(response);
+
   if (response.ok) {
-    console.log("User logged successfully");
-  } else {
-    console.error("Logged failed");
+    console.log(data);
   }
 
-  console.log(response);
+  if (!response.ok) {
+    if (response.status === 401) {
+      throw new Error("Login failed! (check email & password)");
+    } else {
+      throw new Error(`Login failed with status: ${response.status}`);
+    }
+  }
+
+  return data;
 };

@@ -1,7 +1,10 @@
 import { url } from "../utils/url";
-import { RegisterData } from "../utils/types";
+import { FormsData } from "../utils/types";
 
-export const RegisterAPI = async ({ email, password }: RegisterData) => {
+export const RegisterAPI = async ({
+  email,
+  password,
+}: FormsData): Promise<FormsData> => {
   const response = await fetch(`${url}/signup`, {
     method: "POST",
     headers: {
@@ -10,11 +13,14 @@ export const RegisterAPI = async ({ email, password }: RegisterData) => {
     body: JSON.stringify({ email, password }),
   });
 
-  if (response.ok) {
-    console.log("User registered successfully");
-  } else {
-    console.error("Registration failed");
+  const data = await response.json();
+
+  if (!response.ok) {
+    throw new Error(`Registration failed with status: ${response.status}`);
   }
 
   console.log(response);
+  console.log(data);
+
+  return data;
 };
