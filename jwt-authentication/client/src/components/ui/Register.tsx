@@ -8,7 +8,7 @@ function RegisterForm() {
   const [password, setPassword] = useState<string>("");
   const [isFormValid, setIsFormValid] = useState<boolean>(false);
 
-  const { isPending, mutate } = useRegister();
+  const { isPending, register } = useRegister();
   const navigate = useNavigate();
 
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -36,7 +36,7 @@ function RegisterForm() {
     event?.preventDefault();
 
     if (isFormValid) {
-      mutate({ email, password });
+      register({ email, password });
 
       setEmail("");
       setPassword("");
