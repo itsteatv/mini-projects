@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useLogin } from "../hooks/useLogin";
-import Spinner from "./Spinner";
+import Spinner from "../ui/Spinner";
 
 function LoginForm() {
   const [email, setEmail] = useState<string>("");
@@ -78,7 +78,7 @@ function LoginForm() {
         >
           {isPending ? (
             <>
-              Logging in <Spinner />
+              Logging in <Spinner spinnerType="loading" size="xs" />
             </>
           ) : (
             "Login"

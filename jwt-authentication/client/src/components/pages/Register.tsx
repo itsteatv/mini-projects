@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useRegister } from "../hooks/useRegister";
-import Spinner from "./Spinner";
+import Spinner from "../ui/Spinner";
 
 function RegisterForm() {
   const [email, setEmail] = useState<string>("");
@@ -108,7 +108,7 @@ function RegisterForm() {
         >
           {isPending ? (
             <>
-              Registering <Spinner />
+              Registering <Spinner spinnerType="loading" size="xs" />
             </>
           ) : (
             "Register"
