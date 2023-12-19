@@ -1,5 +1,13 @@
-function Spinner() {
-  return <span className="loading loading-spinner loading-xs"></span>;
+type SpinnerProps = {
+  spinnerType: string;
+  size: string;
+};
+
+function Spinner({ spinnerType, size }: SpinnerProps) {
+  
+  const spinnerClass = `loading loading-${spinnerType} loading-${size}`;
+
+  return <span className={spinnerClass}></span>;
 }
 
 export default Spinner;
