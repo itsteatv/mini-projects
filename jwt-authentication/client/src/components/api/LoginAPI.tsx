@@ -18,13 +18,9 @@ export const LoginAPI = async ({
   console.log(data);
   console.log(response);
 
-  if (response.ok) {
-    console.log(data);
-  }
-
   if (!response.ok) {
     if (response.status === 401) {
-      throw new Error("Login failed! (check email & password)");
+      throw new Error(data.message);
     } else {
       throw new Error(`Login failed with status: ${response.status}`);
     }
