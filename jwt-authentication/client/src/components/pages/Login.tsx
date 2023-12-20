@@ -45,24 +45,26 @@ function LoginForm() {
     <>
       <form
         onSubmit={handleLoginSubmit}
-        className="min-h-screen flex flex-col gap-4 items-center justify-center"
+        className="min-h-screen flex flex-col gap-4 items-center justify-center w-full max-w-[20rem] mx-auto >=365px:max-w-[15rem]"
       >
-        <h1 className="text-3xl font-bold font-IBM">Login</h1>
-        <input
-          type="text"
-          placeholder="Your email here"
-          className="input input-bordered w-full max-w-xs"
-          value={email}
-          onChange={handleEmailChange}
-        />
-        <input
-          type="password"
-          placeholder="Your password here"
-          className="input input-bordered w-full max-w-xs"
-          value={password}
-          onChange={handlePasswordChange}
-        />
-        <div className="font-IBM flex gap-1">
+        <h1 className="text-titleClamp text-3xl font-bold font-IBM">Login</h1>
+        <div className="inputContainer w-full >=365px:inputContainer">
+          <input
+            type="text"
+            placeholder="Your email here"
+            className="input input-bordered w-full max-w-xs"
+            value={email}
+            onChange={handleEmailChange}
+          />
+          <input
+            type="password"
+            placeholder="Your password here"
+            className="input input-bordered w-full max-w-xs"
+            value={password}
+            onChange={handlePasswordChange}
+          />
+        </div>
+        <div className="font-IBM text-textClamp flex gap-1 >=365px:flex-col">
           New Here?
           <div
             className="italic cursor-pointer hover:text-gray-400 duration-300"
