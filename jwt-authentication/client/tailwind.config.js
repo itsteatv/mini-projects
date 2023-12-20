@@ -24,6 +24,13 @@ export default {
           },
         },
       },
+      screens: {
+        ">=365px": { "min": "9.375em", "max": "22.8125em" },
+      },
+      fontSize: {
+        "titleClamp": "clamp(0.5rem, 10.2vw - 0.5rem, 1.875rem)",
+        "textClamp": "clamp(0.5rem, 3.7vw + 0.2rem, 1rem)"
+      }
     },
   },
   daisyui: {
