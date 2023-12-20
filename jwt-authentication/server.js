@@ -15,6 +15,7 @@ app.use(express.json());
 
 app.post("/signup", controllers.signup);
 app.post("/login", controllers.login);
+app.get("/me" , isAuthenticated ,controllers.getProfile)
 app.get("/protected", isAuthenticated, controllers.protected);
 
 app.use(notFound);
