@@ -20,9 +20,9 @@ function Welcome() {
   }
 
   return (
-    <div className="flex items-center justify-center min-h-screen font-IBM text-5xl uppercase">
-      Welcome
-    </div>
+    <h1 className="flex items-center justify-center min-h-screen animate-text bg-gradient-to-r uppercase from-teal-500 via-purple-500 to-orange-500 bg-clip-text text-5xl font-IBM font-extrabold text-transparent">
+      welcome
+    </h1>
   );
 }
 
