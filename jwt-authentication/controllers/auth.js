@@ -6,6 +6,12 @@ const User = require("../models/user");
 const signup = async (req, res, next) => {
   try {
     const { email, password } = req.body;
+
+    const userAlreadyExist = await User.findOne({email})
+    if (userAlreadyExist) {
+      throw new UnAuthenticated("email already exist")
+    }
+
     await User.create({ email, password});
     res.status(201).json({ message: "user registered successfully" });
   } catch (error) {
