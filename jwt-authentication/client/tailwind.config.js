@@ -30,7 +30,8 @@ export default {
       fontSize: {
         "titleClamp": "clamp(0.5rem, 10.2vw - 0.5rem, 1.875rem)",
         "textClamp": "clamp(0.5rem, 3.7vw + 0.2rem, 1rem)",
-        "welcomeClamp": "clamp(0.75rem, 16.7vw - 0.8rem, 3rem)"
+        "welcomeClamp": "clamp(0.75rem, 11.4vw - 0.3rem, 3rem)",
+        "errorClamp": "clamp(0.5rem, 2.8vw + 0.2rem, 2rem)"
       }
     },
   },

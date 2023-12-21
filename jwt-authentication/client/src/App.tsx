@@ -12,6 +12,7 @@ function App() {
       queries: {
         staleTime: 0,
         refetchOnReconnect: true,
+        refetchOnWindowFocus: true,
       },
     },
   });
