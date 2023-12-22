@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useUserData } from "../hooks/useUserData";
 import { useLogout } from "../hooks/useLogout";
-import { BiLogOutCircle } from "react-icons/bi";
 import Spinner from "../ui/Spinner";
 
 function Welcome() {
