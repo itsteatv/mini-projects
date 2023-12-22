@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
-import Spinner from "../ui/Spinner";
 import { useUserData } from "../hooks/useUserData";
+import { useLogout } from "../hooks/useLogout";
+import { BiLogOutCircle } from "react-icons/bi";
+import Spinner from "../ui/Spinner";
 
 function Welcome() {
   const { userData, isLoading, error, refetch } = useUserData();
+  const { logout } = useLogout();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -30,14 +33,22 @@ function Welcome() {
               Error: {error.message}
             </p>
           ) : (
-            <h1 className="animate-text text-center bg-gradient-to-r uppercase from-teal-500 via-purple-500 to-orange-500 bg-clip-text text-5xl text-welcomeClamp font-IBM font-extrabold text-transparent">
-              Welcome
-              {userData && (
-                <div>
-                  <p>{userData.email}</p>
-                </div>
-              )}
-            </h1>
+            <>
+              <h1 className="animate-text text-left bg-gradient-to-r uppercase from-teal-500 via-purple-500 to-orange-500 bg-clip-text text-5xl text-welcomeClamp font-IBM font-extrabold text-transparent">
+                <p className="text-sm text-left">Welcome</p>
+                {userData && (
+                  <div>
+                    <p>{userData.email}</p>
+                    <p
+                      onClick={logout}
+                      className="text-sm text-right cursor-pointer"
+                    >
+                      logout
+                    </p>
+                  </div>
+                )}
+              </h1>
+            </>
           )}
         </>
       )}
